@@ -1,0 +1,212 @@
+.breadcrumb__text h4 {
+    color: #111111;
+    font-weight: 550;
+    margin-bottom: 8px;
+    font-size: 24px;
+}
+
+.breadcrumb__links a,
+.breadcrumb__links span {
+    font-size: 15px;
+    display: inline-block;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.breadcrumb__links a {
+    color: #b7b7b7;
+    margin-right: 18px;
+    position: relative;
+}
+
+.breadcrumb__links a:after {
+    position: absolute;
+    right: -14px;
+    top: 0;
+    content: ">";
+}
+
+.breadcrumb__links span {
+    color: #111111;
+}
+
+.shop__sidebar {
+    margin-right: 1rem;
+}
+
+.shop__sidebar__accordion .card {
+    border: none;
+    border-radius: 0;
+    margin: 25px 0;
+}
+
+.shop__sidebar__accordion .card-heading {
+    cursor: pointer;
+}
+
+.shop__sidebar__accordion .card-heading a {
+    color: #111111;
+    font-size: 16px;
+    font-weight: 550;
+    text-transform: uppercase;
+    display: block;
+    text-decoration: none;
+}
+
+.shop__sidebar__accordion .card-body {
+    padding: 10px 0 20px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+ul,
+ol {
+    padding: 0;
+    margin: 0;
+}
+
+.shop__sidebar__categories ul li,
+.shop__sidebar__price ul li,
+.shop__sidebar__brand ul li {
+    list-style: none;
+}
+
+.shop__sidebar__categories ul li a,
+.shop__sidebar__price ul li a,
+.shop__sidebar__brand ul li a {
+    cursor: pointer;
+    color: #b7b7b7;
+    font-size: 15px;
+    line-height: 32px;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.shop__sidebar__categories ul li a:hover,
+.shop__sidebar__price ul li a:hover,
+.shop__sidebar__brand ul li a:hover {
+    font-weight: 550;
+    color: #111111;
+}
+
+.sale__title h3 {
+    color: #111111;
+    font-size: 32px;
+    font-weight: 550;
+}
+
+.shop__sidebar__color label {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 10px 10px 0;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.shop__sidebar__color label.c-1 {
+    background: #0b090c;
+}
+
+.shop__sidebar__color label.c-2 {
+    background: #20315f;
+}
+
+.shop__sidebar__color label.c-3 {
+    background: #f1af4d;
+}
+
+.shop__sidebar__color label input {
+    position: absolute;
+    visibility: hidden;
+}
+
+.shop__sidebar__color label:after {
+    position: absolute;
+    left: -3px;
+    top: -3px;
+    height: 36px;
+    width: 36px;
+    border: 1px solid #e5e5e5;
+    content: "";
+    border-radius: 50%;
+}
+
+.shop__sidebar__color label:hover:after {
+    border: 1.5px solid #5C83CE;
+}
+
+.shop__product__option p {
+    color: #111111;
+    margin-bottom: 0;
+    font-size: 15px;
+    line-height: 25px;
+}
+
+.shop__product__option__right .button,
+.shop__product__option__left .button {
+    cursor: pointer;
+    color: #111111;
+    font-size: 15px;
+    font-weight: 550;
+}
+
+.shop__product__option__right .btn:active {
+    border: none;
+}
+
+.dropdown-item:hover {
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dropdown-item:active {
+    background-color: #5C83CE;
+}
+
+.product__pagination {
+    padding-top: 25px;
+    text-align: center;
+}
+
+
+
+.product__item:hover .product__hover li .heart,
+.product__item:hover .product__hover li .cart {
+    fill: black;
+    animation: shake 0.5s;
+}
+
+.form-check-input {
+    width: 15px;
+    height: 15px;
+    margin-top: 0;
+}
+
+.form-check-input:hover {
+    cursor: pointer;
+}
+
+.form-check-input:checked {
+    border-color: #5C83CE !important;
+    background-color: #5C83CE;
+}
+
+.form-check-input:focus {
+    border-color: #5C83CE !important;
+    box-shadow: 0 0 0 0.2rem rgba(92, 131, 206, 0.5) !important;
+}
+
+
+
+@media only screen and (max-width: 767px) {
+
+    .shop__sidebar,
+    .breadcrumb__links {
+        margin-left: 1rem;
+    }
+
+    .shop__sidebar__accordion .card {
+        margin: 15px 0;
+    }
+}

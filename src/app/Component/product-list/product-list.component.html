@@ -1,0 +1,435 @@
+<div class="container">
+    <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row ">
+                <div class="col-lg-12 p-0 pt-4 ">
+                    <ol class="breadcrumb breadcrumb-chevron align-items-center">
+                        <li class="breadcrumb-item">
+                            <a class="link-body-emphasis home" href="/">
+                                <mat-icon class="colorBlack" aria-label="home">home</mat-icon>
+                                <span class="visually-hidden">Home</span>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a class="breadcrumb-item active text-capitalize text-decoration-none">Category</a>
+                        </li>
+                        <li class="breadcrumb-item active text-capitalize text-decoration-none" aria-current="page">
+                            {{category}}
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="row">
+        <div class="d-none d-lg-block col-lg-3">
+            <div class="shop__sidebar">
+                <div class="shop__sidebar__accordion">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-heading d-flex justify-content-between" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree">
+                                <a>Filter Price</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#111111">
+                                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                                </svg>
+                            </div>
+                            <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="shop__sidebar__price">
+                                        <ul class="list-unstyled">
+                                            <li class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="price1">
+                                                <label class="form-check-label" for="price1">
+                                                    $0.00 - $50.00
+                                                </label>
+                                            </li>
+                                            <li class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="price2">
+                                                <label class="form-check-label" for="price2">
+                                                    $50.00 - $100.00
+                                                </label>
+                                            </li>
+                                            <li class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="price3">
+                                                <label class="form-check-label" for="price3">
+                                                    $100.00 - $150.00
+                                                </label>
+                                            </li>
+                                            <li class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="price4">
+                                                <label class="form-check-label" for="price4">
+                                                    $150.00 - $200.00
+                                                </label>
+                                            </li>
+                                            <li class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="price5">
+                                                <label class="form-check-label" for="price5">
+                                                    $200.00 - $250.00
+                                                </label>
+                                            </li>
+                                            <li class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="price6">
+                                                <label class="form-check-label" for="price6">
+                                                    $250.00+
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-heading d-flex justify-content-between" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFour">
+                                <a>Size</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#111111">
+                                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                                </svg>
+                            </div>
+                            <div id="collapseFour" class="collapse show" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="shop__sidebar__size">
+                                        <ul class=" text-uppercase">
+                                            <li class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="xs">
+                                                <label class="form-check-label" for="xs">
+                                                    xs
+                                                </label>
+                                            </li>
+                                            <li class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="sm">
+                                                <label class="form-check-label" for="sm">
+                                                    s
+                                                </label>
+                                            </li>
+                                            <li class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="md">
+                                                <label class="form-check-label" for="md">
+                                                    m
+                                                </label>
+                                            </li>
+                                            <li class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="lg">
+                                                <label class="form-check-label" for="md">
+                                                    L
+                                                </label>
+                                            </li>
+                                            <li class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="xl">
+                                                <label class="form-check-label" for="xl">
+                                                    xl
+                                                </label>
+                                            </li>
+                                            <li class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="2xl">
+                                                <label class="form-check-label" for="2xl">
+                                                    2xl
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-heading d-flex justify-content-between" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFive">
+                                <a>Colors</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#111111">
+                                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                                </svg>
+                            </div>
+                            <div id="collapseFive" class="collapse show" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="shop__sidebar__color">
+                                        <label class="c-1" for="sp-1">
+                                            <input type="radio" id="sp-1">
+                                        </label>
+                                        <label class="c-2" for="sp-2">
+                                            <input type="radio" id="sp-2">
+                                        </label>
+                                        <label class="c-3" for="sp-3">
+                                            <input type="radio" id="sp-3">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-heading d-flex justify-content-between" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne">
+                                <a>Categories</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#111111">
+                                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                                </svg>
+                            </div>
+                            <div id="collapseOne" class="collapse" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="shop__sidebar__categories">
+                                        <ul class="nice-scroll">
+                                            <li><a>Men (20)</a></li>
+                                            <li><a>Tops (20)</a></li>
+                                            <li><a>Bottoms (20)</a></li>
+                                            <li><a>Jeans (20)</a></li>
+                                            <li><a>New Arrival (20)</a></li>
+                                            <li><a>Accessories (20)</a></li>
+                                            <li><a>Sale (20)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-heading d-flex justify-content-between" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo">
+                                <a>Branding</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#111111">
+                                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                                </svg>
+                            </div>
+                            <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="shop__sidebar__brand">
+                                        <ul>
+                                            <li><a>Hollister</a></li>
+                                            <li><a>Fossil</a></li>
+                                            <li><a>Old Navy</a></li>
+                                            <li><a>H&M</a></li>
+                                            <li><a>Shein</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="shop__product__option">
+                <div class="row pt-4 pb-3 ">
+                    <div class="col">
+                        <div class="shop__product__option__left d-flex justify-content-start">
+                            <p class="d-none d-lg-block">Results: 6</p>
+                            <div class="d-block d-lg-none dropDownd-flex">
+                                <p class="button dropdown-toggle px-2" data-bs-toggle="dropdown">Filter
+                                </p>
+                                <div class="dropdown-menu shadow-sm">
+                                    Filter Options
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="shop__product__option__right d-flex justify-content-end">
+                            <p>Sort by Price:</p>
+                            <div class="dropDownd-flex ">
+                                <p class="button dropdown-toggle px-2" data-bs-toggle="dropdown">Low To High
+                                </p>
+                                <ul class="dropdown-menu shadow-sm">
+                                    <li><a class="dropdown-item py-2">Low To High</a></li>
+                                    <li><a class="dropdown-item py-2">High To Low</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-4 col-lg-4">
+                    <div class="product__item" (click)="viewItem('Product-ID')">
+                        <div class="product__item__pic set-bg" data-setbg="../../../assets/img/product-sale.png"
+                            style="background-image: url(&quot;../../../assets/img/product-sale.png&quot;);">
+                            <ul class="product__hover">
+                                <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#929393" class="heart" (click)="heartItem($event)">
+                                            <path
+                                                d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z" />
+                                        </svg></a></li>
+                                <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#929393" class="cart" (click)="quickView($event)">
+                                            <path
+                                                d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM208-800h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Z" />
+                                        </svg></a></li>
+                            </ul>
+                            <div class="product__hover__QuickView" (click)="quickView($event)">
+                                <a class="quick-view">Quick View</a>
+
+                            </div>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>Piqué Biker Jacket</h6>
+                            <h5>$67.24</h5>
+                            <div class="product__color__select">
+                                <div class="productColor"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-4">
+                    <div class="product__item" (click)="viewItem('Product-ID')">
+                        <div class="product__item__pic set-bg" data-setbg="../../../assets/img/product-sale.png"
+                            style="background-image: url(&quot;../../../assets/img/product-sale.png&quot;);">
+                            <ul class="product__hover">
+                                <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#929393" class="heart" (click)="heartItem($event)">
+                                            <path
+                                                d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z" />
+                                        </svg></a></li>
+                                <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#929393" class="cart" (click)="quickView($event)">
+                                            <path
+                                                d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM208-800h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Z" />
+                                        </svg></a></li>
+                            </ul>
+                            <div class="product__hover__QuickView" (click)="quickView($event)">
+                                <a class="quick-view">Quick View</a>
+
+                            </div>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>Piqué Biker Jacket</h6>
+                            <h5>$67.24</h5>
+                            <div class="product__color__select">
+                                <div class="productColor"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-4">
+                    <div class="product__item" (click)="viewItem('Product-ID')">
+                        <div class="product__item__pic set-bg" data-setbg="../../../assets/img/product-sale.png"
+                            style="background-image: url(&quot;../../../assets/img/product-sale.png&quot;);">
+                            <ul class="product__hover">
+                                <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#929393" class="heart" (click)="heartItem($event)">
+                                            <path
+                                                d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z" />
+                                        </svg></a></li>
+                                <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#929393" class="cart" (click)="quickView($event)">
+                                            <path
+                                                d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM208-800h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Z" />
+                                        </svg></a></li>
+                            </ul>
+                            <div class="product__hover__QuickView" (click)="quickView($event)">
+                                <a class="quick-view">Quick View</a>
+
+                            </div>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>Piqué Biker Jacket</h6>
+                            <h5>$67.24</h5>
+                            <div class="product__color__select">
+                                <div class="productColor"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-4">
+                    <div class="product__item" (click)="viewItem('Product-ID')">
+                        <div class="product__item__pic set-bg" data-setbg="../../../assets/img/product-sale.png"
+                            style="background-image: url(&quot;../../../assets/img/product-sale.png&quot;);">
+                            <ul class="product__hover">
+                                <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#929393" class="heart" (click)="heartItem($event)">
+                                            <path
+                                                d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z" />
+                                        </svg></a></li>
+                                <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#929393" class="cart" (click)="quickView($event)">
+                                            <path
+                                                d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM208-800h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Z" />
+                                        </svg></a></li>
+                            </ul>
+                            <div class="product__hover__QuickView" (click)="quickView($event)">
+                                <a class="quick-view">Quick View</a>
+
+                            </div>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>Piqué Biker Jacket</h6>
+                            <h5>$67.24</h5>
+                            <div class="product__color__select">
+                                <div class="productColor"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-4">
+                    <div class="product__item" (click)="viewItem('Product-ID')">
+                        <div class="product__item__pic set-bg" data-setbg="../../../assets/img/product-sale.png"
+                            style="background-image: url(&quot;../../../assets/img/product-sale.png&quot;);">
+                            <ul class="product__hover">
+                                <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#929393" class="heart" (click)="heartItem($event)">
+                                            <path
+                                                d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z" />
+                                        </svg></a></li>
+                                <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#929393" class="cart" (click)="quickView($event)">
+                                            <path
+                                                d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM208-800h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Z" />
+                                        </svg></a></li>
+                            </ul>
+                            <div class="product__hover__QuickView" (click)="quickView($event)">
+                                <a class="quick-view">Quick View</a>
+
+                            </div>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>Piqué Biker Jacket</h6>
+                            <h5>$67.24</h5>
+                            <div class="product__color__select">
+                                <div class="productColor"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-4">
+                    <div class="product__item" (click)="viewItem('Product-ID')">
+                        <div class="product__item__pic set-bg" data-setbg="../../../assets/img/product-sale.png"
+                            style="background-image: url(&quot;../../../assets/img/product-sale.png&quot;);">
+                            <ul class="product__hover">
+                                <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#929393" class="heart" (click)="heartItem($event)">
+                                            <path
+                                                d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z" />
+                                        </svg></a></li>
+                                <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#929393" class="cart" (click)="quickView($event)">
+                                            <path
+                                                d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM208-800h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Z" />
+                                        </svg></a></li>
+                            </ul>
+                            <div class="product__hover__QuickView" (click)="quickView($event)">
+                                <a class="quick-view">Quick View</a>
+
+                            </div>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>Piqué Biker Jacket</h6>
+                            <h5>$67.24</h5>
+                            <div class="product__color__select">
+                                <div class="productColor"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product__pagination">
+                        Pagination
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

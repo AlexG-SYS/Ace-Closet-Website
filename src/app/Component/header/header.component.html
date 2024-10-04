@@ -1,0 +1,182 @@
+<nav class="navbar navbar-expand-lg p-4 pb-2 px-2">
+    <div class="container-fluid">
+        <div class="col-auto"></div>
+        <div class="col-sm-8">
+            <div class="row justify-content-center">
+                <!-- Logo and Company Name -->
+                <div class="col-auto d-flex align-items-center d-block d-lg-none p-0">
+                    <button class="btn px-0" type="button" aria-label="Toggle navigation" (click)="toggleSideNav()">
+                        <mat-icon aria-label="menu">menu</mat-icon>
+                    </button>
+                </div>
+                <div class="col-auto col-sm-auto d-flex align-items-center px-4">
+                    <a routerLink="/">
+                        <img src="../../../assets/logo.png" alt="logo" height="auto" width="60px">
+                    </a>
+                    <a routerLink="/" class="navbar-brand me-0">
+                        <h1 class="m-2 fs-2" style="font-family: 'Times New Roman', serif;">
+                            Ace Closet
+                        </h1>
+                    </a>
+                </div>
+                <div class="col-auto d-flex align-items-center d-block d-lg-none p-0">
+                    <div class="col-auto ">
+                        <a routerLink="/wish-list"><mat-icon class="colorBlack"
+                                aria-label="favorite">favorite</mat-icon></a>
+                    </div>
+                    <div class="col-auto px-2">
+                        <a routerLink="/cart"><mat-icon class="colorBlack" matBadge="0" matBadgeSize="small"
+                                matBadgeColor="warn" matBadgeOverlap="true" aria-hidden="false"
+                                aria-label="shopping_cart">shopping_cart</mat-icon></a>
+                    </div>
+                </div>
+
+                <!-- Search -->
+                <div class="col-lg input-group my-2 px-4">
+                    <!-- Side Nav Button -->
+                    <input type="text" placeholder="Search..." class="form-control" aria-label="Search">
+                    <button class="btn btn-outline-secondary input-group-text d-flex align-items-center" type="button">
+                        <mat-icon aria-label="search">search</mat-icon>
+                    </button>
+                </div>
+                <!-- login, signup, fav, cart -->
+                <div class="col-sm-auto d-flex align-items-center d-none d-sm-none d-lg-block ">
+                    <div class="row my-2 py-2">
+                        <div class="col-auto ">
+                            <span class="d-flex align-items-center"><mat-icon aria-label="person">person</mat-icon> <a
+                                    class="ps-1 linkBtn" routerLink="/login">Sign in</a>&nbsp;/&nbsp;<a class="linkBtn"
+                                    routerLink="/register">Register</a></span>
+                        </div>
+                        <div class="col-auto px-0">
+                            <a routerLink="/wish-list"><mat-icon class="colorBlack"
+                                    aria-label="favorite">favorite</mat-icon></a>
+                        </div>
+                        <div class="col-auto">
+                            <a routerLink="/cart"><mat-icon class="colorBlack" matBadge="0" matBadgeSize="small"
+                                    matBadgeColor="warn" matBadgeOverlap="true" aria-hidden="false"
+                                    aria-label="shopping_cart">shopping_cart</mat-icon></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center ">
+                <div class="col-auto pt-2  d-none d-lg-block">
+                    <ul class="navbar-nav">
+                        <li>
+                            <a class="nav-link" href="/category/all">All</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/category/tops">Tops</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/category/bottoms">Bottoms</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/category/jeans">Jeans</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/category/shoes">Shoes</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/category/new-arrival">New Arrival</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/category/accessories">Accessories</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/category/sale">Sale</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/faq">FAQ</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#contactUsModal">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-auto"></div>
+    </div>
+</nav>
+
+@if(sideNavHidden){
+<div class="sideNavHidden p-4 ">
+    <div class="row">
+        <div class="col d-flex align-items-center text-center">
+            <span class="d-flex align-items-center text-center"><mat-icon aria-label="person">person</mat-icon> <a
+                    class="ps-1 linkBtn" routerLink="/login" (click)="toggleSideNav()">Sign in</a>&nbsp;/&nbsp;<a
+                    class="linkBtn" routerLink="/login" (click)="toggleSideNav()">Register</a></span>
+        </div>
+        <div class="col-1 p-0">
+            <button type="button" class="btn-close" (click)="toggleSideNav()" aria-label="Toggle navigation"></button>
+        </div>
+
+    </div>
+    <div class=" pt-2  navbar ">
+        <ul class="navbar-nav">
+            <li>
+                <a class="nav-link" href="/category/all">All</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/category/tops">Tops</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/category/bottoms">Bottoms</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/category/jeans">Jeans</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/category/shoes">Shoes</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/category/new-arrival">New Arrival</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/category/accessories">Accessories</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/category/sale">Sale</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/faq">FAQ</a>
+            </li>
+            <li>
+                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#contactUsModal"
+                    (click)="toggleSideNav()">Contact Us</a>
+            </li>
+        </ul>
+    </div>
+</div>}
+
+<!-- Modal -->
+<div class="modal fade" id="contactUsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 mb-0 ms-2 fw-medium" id="exampleModalLabel">
+                    Contact Us
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="col px-4 pb-4 text-center ">
+                    <h3 class="mb-0 fw-medium">
+                        info&#64;AceCloset.bz
+                    </h3>
+                    <h3 class="fw-medium">+501 628-9704</h3>
+
+                    <a href=" https://wa.me/5016289704" target=”_blank”><img src="../../../assets/whatsapp-logo.png"
+                            class="me-1" alt="Facebook Icon" height="auto" width="25px"></a>
+                    <a href="https://www.facebook.com/AceClosetBz" target=”_blank”><img
+                            src="../../../assets/facebook-logo.png" class="mx-1" alt="Facebook Icon" height="auto"
+                            width="25px"></a>
+                    <a href="https://www.instagram.com/ace_closet_bz/" target=”_blank”><img
+                            src="../../../assets/instagram-logo.png" class="ms-1" alt="Instagram Icon" height="auto"
+                            width="25px"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

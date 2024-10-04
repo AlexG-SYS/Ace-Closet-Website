@@ -1,0 +1,175 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+.product__item {
+  box-shadow: 3px 0 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f2f3f4;
+  background-color: #f8f9fa;
+  border-radius: 25px;
+  overflow: hidden;
+  margin-bottom: 25px;
+  padding: 1rem 0.5rem;
+}
+
+.product__item:hover {
+
+  .product__hover li .heart {
+    fill: black;
+    animation: shake 0.5s;
+  }
+
+  .product__hover li .cart {
+    fill: black;
+    animation: shake 0.5s;
+  }
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25%,
+  75% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+.product__item__pic {
+  cursor: pointer;
+  height: 10rem;
+  width: auto;
+  position: relative;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.product__hover {
+  z-index: 9;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+}
+
+.product__hover li {
+  list-style: none;
+}
+
+.product__hover li .heart:hover {
+  fill: red !important;
+}
+
+.product__hover li .cart:hover {
+  fill: #5C83CE !important;
+}
+
+.product__item__pic:hover .quick-view {
+  display: block;
+  top: -550px;
+  left: 50px;
+}
+
+.quick-view {
+  width: 9rem;
+  text-align: center;
+  display: none;
+  background-color: #f5f5f5da;
+  color: #585858;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+
+}
+
+.product__hover__QuickView {
+  z-index: 9;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  margin: 0;
+}
+
+.quick-view:hover {
+  background-color: #ffffff;
+  color: #0b090c;
+}
+
+
+.product__item__pic {
+  position: relative;
+}
+
+.product__item__text {
+  cursor: pointer;
+  padding-top: 1rem;
+  padding-left: .5rem;
+  position: relative;
+}
+
+.product__item__text h6,
+.product__item__text h5 {
+  color: #111;
+  font-size: 16px;
+  font-weight: 550;
+  margin-bottom: 5px;
+}
+
+.product__color__select {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.productColor {
+  width: .9rem;
+  height: .9rem;
+  background: #8b4d2f;
+  border-radius: 50%;
+}
+
+.colorBlack {
+  padding-top: 1px;
+  color: gray;
+}
+
+.colorBlack:hover {
+  color: black;
+}
+
+@media only screen and (max-width: 767px) {
+  .product__item {
+    padding: 0.5rem;
+  }
+
+  .product__item__pic {
+    height: 8rem;
+  }
+
+  .product__hover__QuickView {
+    right: 25%;
+  }
+
+  .quick-view,
+  .product__hover__QuickView {
+    display: none;
+  }
+}

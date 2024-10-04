@@ -1,0 +1,236 @@
+<div class="container">
+    <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row ">
+                <div class="col-lg-12 p-0 pt-4 ">
+                    <ol class="breadcrumb breadcrumb-chevron align-items-center">
+                        <li class="breadcrumb-item">
+                            <a class="link-body-emphasis home" href="/">
+                                <mat-icon class="colorBlack" aria-label="home">home</mat-icon>
+                                <span class="visually-hidden">Home</span>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item text-capitalize">
+                            <a class="breadcrumb-item active text-capitalize text-decoration-none">Category</a>
+                        </li>
+                        <li class="breadcrumb-item text-capitalize" aria-current="page">
+                            <a class="breadcrumb-item active text-capitalize text-decoration-none">{{category}}</a>
+                        </li>
+                        <li class="breadcrumb-item active text-capitalize text-decoration-none" aria-current="page">
+                            {{subCategory}}
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="row d-flex align-items-center">
+        <div class="col d-none d-md-block"></div>
+        <div class="col pb-4">
+            <div id="carouselIndicators" class="carousel slide">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="../../../assets/img/jacket.jpg" class="d-block productImage" alt="product Image">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../../../assets/img/jacket.jpg" class="d-block productImage" alt="product Image">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../../../assets/img/jacket.jpg" class="d-block productImage" alt="product Image">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="col pb-4">
+            <h1 class="mb-0 fw-medium">Piqué Biker Jacket</h1>
+            <h3 class="mb-0 fw-medium">$67.24</h3>
+            <mat-divider class="my-3"></mat-divider>
+            <h5 class="fw-medium">
+                Color: <div class="mt-2 productDetialColor"></div>
+            </h5>
+            <h5 class="mb-0 fw-medium">Size:</h5>
+            <div class="size-buttons mt-2">
+                <button class="size-btn">XS</button>
+                <button class="size-btn">S</button>
+                <button class="size-btn">M</button>
+                <button class="size-btn">L</button>
+                <button class="size-btn">XL</button>
+            </div>
+            <!-- Quantity Dropdown -->
+            <h5 class="mb-0 mt-3 fw-medium">Quantity:</h5>
+            <select class="quantity-select my-2">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <!-- Add to Cart and Add to Favorite buttons -->
+            <div class="col-auto d-flex align-items-center">
+                <div class="col-auto prodCart">
+                    <a>Add to Cart<mat-icon aria-label="shopping_cart">shopping_cart</mat-icon></a>
+                </div>
+                <div class="col-auto prodHeart px-2">
+                    <a><mat-icon aria-label="favorite">favorite</mat-icon></a>
+                </div>
+            </div>
+            <h5 class="fw-medium mt-3">
+                Description:
+                <p class="fw-normal pt-2">Lobortis felis, fringilla fringilla ridiculus ut semper lacus dis elementum
+                    integer. Sem vivamus placerat primis eleifend habitasse nec, at himenaeos! Sed elit porta duis
+                    senectus venenatis. Placerat pharetra aenean erat et, laoreet inceptos sociosqu? Dictum quam
+                    senectus nisi scelerisque parturient tortor nibh per viverra mattis aliquam.</p>
+            </h5>
+        </div>
+        <div class="col d-none d-md-block"></div>
+    </div>
+    <mat-divider class="py-2"></mat-divider>
+    <div class="row">
+        <div class="col text-center my-2">
+            <h2 class="fw-medium">Related Products</h2>
+        </div>
+    </div>
+    <div class="row d-flex align-items-center pb-4">
+        <div class="col">
+            <div class="row">
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="product__item" (click)="viewItem('Product-ID')">
+                        <div class="product__item__pic set-bg" data-setbg="../../../assets/img/product-sale.png"
+                            style="background-image: url(&quot;../../../assets/img/product-sale.png&quot;);">
+                            <ul class="product__hover">
+                                <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#929393" class="heart" (click)="heartItem($event)">
+                                            <path
+                                                d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z" />
+                                        </svg></a></li>
+                                <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#929393" class="cart" (click)="quickView($event)">
+                                            <path
+                                                d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM208-800h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Z" />
+                                        </svg></a></li>
+                            </ul>
+                            <div class="product__hover__QuickView" (click)="quickView($event)">
+                                <a class="quick-view">Quick View</a>
+
+                            </div>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>Piqué Biker Jacket</h6>
+                            <h5>$67.24</h5>
+                            <div class="product__color__select">
+                                <div class="productColor"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="product__item" (click)="viewItem('Product-ID')">
+                        <div class="product__item__pic set-bg" data-setbg="../../../assets/img/product-sale.png"
+                            style="background-image: url(&quot;../../../assets/img/product-sale.png&quot;);">
+                            <ul class="product__hover">
+                                <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#929393" class="heart" (click)="heartItem($event)">
+                                            <path
+                                                d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z" />
+                                        </svg></a></li>
+                                <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#929393" class="cart" (click)="quickView($event)">
+                                            <path
+                                                d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM208-800h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Z" />
+                                        </svg></a></li>
+                            </ul>
+                            <div class="product__hover__QuickView" (click)="quickView($event)">
+                                <a class="quick-view">Quick View</a>
+
+                            </div>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>Piqué Biker Jacket</h6>
+                            <h5>$67.24</h5>
+                            <div class="product__color__select">
+                                <div class="productColor"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="product__item" (click)="viewItem('Product-ID')">
+                        <div class="product__item__pic set-bg" data-setbg="../../../assets/img/product-sale.png"
+                            style="background-image: url(&quot;../../../assets/img/product-sale.png&quot;);">
+                            <ul class="product__hover">
+                                <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#929393" class="heart" (click)="heartItem($event)">
+                                            <path
+                                                d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z" />
+                                        </svg></a></li>
+                                <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#929393" class="cart" (click)="quickView($event)">
+                                            <path
+                                                d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM208-800h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Z" />
+                                        </svg></a></li>
+                            </ul>
+                            <div class="product__hover__QuickView" (click)="quickView($event)">
+                                <a class="quick-view">Quick View</a>
+
+                            </div>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>Piqué Biker Jacket</h6>
+                            <h5>$67.24</h5>
+                            <div class="product__color__select">
+                                <div class="productColor"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="product__item" (click)="viewItem('Product-ID')">
+                        <div class="product__item__pic set-bg" data-setbg="../../../assets/img/product-sale.png"
+                            style="background-image: url(&quot;../../../assets/img/product-sale.png&quot;);">
+                            <ul class="product__hover">
+                                <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#929393" class="heart" (click)="heartItem($event)">
+                                            <path
+                                                d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z" />
+                                        </svg></a></li>
+                                <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#929393" class="cart" (click)="quickView($event)">
+                                            <path
+                                                d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM208-800h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Z" />
+                                        </svg></a></li>
+                            </ul>
+                            <div class="product__hover__QuickView" (click)="quickView($event)">
+                                <a class="quick-view">Quick View</a>
+
+                            </div>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>Piqué Biker Jacket</h6>
+                            <h5>$67.24</h5>
+                            <div class="product__color__select">
+                                <div class="productColor"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
