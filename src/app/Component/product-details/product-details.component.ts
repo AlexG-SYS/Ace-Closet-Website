@@ -10,7 +10,7 @@ import { QuickViewProductComponent } from '../quick-view-product/quick-view-prod
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [MatIconModule, MatDividerModule],
+  imports: [MatIconModule, MatDividerModule, QuickViewProductComponent],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })
@@ -50,7 +50,9 @@ export class ProductDetailsComponent {
 
   quickView(event: Event) {
     event.stopPropagation();
-    this.dialog.open(QuickViewProductComponent);
+    this.dialog.open(QuickViewProductComponent, {
+      maxWidth: '900px'
+    });
   }
 
   heartItem(event: Event) {

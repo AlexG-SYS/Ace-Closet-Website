@@ -46,7 +46,9 @@ export class ProductListComponent implements OnInit {
 
   quickView(event: Event) {
     event.stopPropagation();
-    this.dialog.open(QuickViewProductComponent);
+    this.dialog.open(QuickViewProductComponent, {
+      maxWidth: '900px'
+    });
   }
 
   heartItem(event: Event) {

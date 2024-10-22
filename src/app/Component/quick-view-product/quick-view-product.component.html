@@ -1,1 +1,86 @@
-<p>quick-view-product works!</p>
+<mat-dialog-content class="mat-typography">
+    <div class="row d-flex justify-content-end pt-2 pe-2">
+        <button mat-dialog-close class="btn-close" aria-label="Close"></button>
+    </div>
+    <div class="row">
+        <div class="col pb-4">
+            <div id="carouselIndicatorsQuickView" class="carousel slide">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselIndicatorsQuickView" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselIndicatorsQuickView" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselIndicatorsQuickView" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="../../../assets/img/jacket.jpg" class="d-block productImage" alt="product Image">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../../../assets/img/jacket.jpg" class="d-block productImage" alt="product Image">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../../../assets/img/jacket.jpg" class="d-block productImage" alt="product Image">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicatorsQuickView"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicatorsQuickView"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="col pb-4">
+            <h1 class="mb-0 fw-medium">Piqué Biker Jacket</h1>
+            <h2 class="mb-0 fw-medium">$67.24</h2>
+            <h6 class="gstFont m-0">+ GST AT CHECKOUT</h6>
+            <mat-divider class="my-3"></mat-divider>
+            <h5 class="fw-medium">
+                Color: <div class="mt-2 productDetialColor"></div>
+            </h5>
+            <h5 class="mb-0 fw-medium">Size:</h5>
+            <div class="size-buttons mt-2">
+                <button class="size-btn">XS</button>
+                <button class="size-btn">S</button>
+                <button class="size-btn">M</button>
+                <button class="size-btn">L</button>
+                <button class="size-btn">XL</button>
+            </div>
+            <!-- Quantity Dropdown -->
+            <h5 class="mb-0 mt-3 fw-medium">Quantity:</h5>
+            <div class="row">
+                <div class="col d-flex align-items-center">
+                    <select class="quantity-select my-2">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <!-- Add to Cart and Add to Favorite buttons -->
+                    <div class="col-auto prodCart mx-2">
+                        <a>Add to Cart<mat-icon aria-label="shopping_cart">shopping_cart</mat-icon></a>
+                    </div>
+                    <div class="col-auto prodHeart p-0">
+                        <a><mat-icon aria-label="favorite">favorite</mat-icon></a>
+                    </div>
+                </div>
+
+            </div>
+            <h5 class="fw-medium mt-3">
+                Description:
+                <p class="fw-normal pt-2">Lobortis felis, fringilla fringilla ridiculus ut semper lacus dis
+                    elementum
+                    integer. Sem vivamus placerat primis eleifend habitasse nec, at himenaeos! Sed elit porta duis
+                    senectus venenatis. Placerat pharetra aenean erat et, laoreet inceptos sociosqu? Dictum quam
+                    senectus nisi scelerisque parturient tortor nibh per viverra mattis aliquam.</p>
+            </h5>
+        </div>
+    </div>
+</mat-dialog-content>

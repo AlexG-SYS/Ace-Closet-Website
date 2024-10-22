@@ -25,8 +25,8 @@
         </div>
     </section>
     <div class="row d-flex align-items-center">
-        <div class="col d-none d-md-block"></div>
-        <div class="col pb-4">
+        <div class="col d-none d-lg-block"></div>
+        <div class="col pb-4 ps-0 d-flex justify-content-center">
             <div id="carouselIndicators" class="carousel slide">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active"
@@ -61,7 +61,8 @@
         </div>
         <div class="col pb-4">
             <h1 class="mb-0 fw-medium">Piqué Biker Jacket</h1>
-            <h3 class="mb-0 fw-medium">$67.24</h3>
+            <h2 class="mb-0 fw-medium">$67.24</h2>
+            <h6 class="gstFont m-0">+ GST AT CHECKOUT</h6>
             <mat-divider class="my-3"></mat-divider>
             <h5 class="fw-medium">
                 Color: <div class="mt-2 productDetialColor"></div>
@@ -76,21 +77,24 @@
             </div>
             <!-- Quantity Dropdown -->
             <h5 class="mb-0 mt-3 fw-medium">Quantity:</h5>
-            <select class="quantity-select my-2">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            <!-- Add to Cart and Add to Favorite buttons -->
-            <div class="col-auto d-flex align-items-center">
-                <div class="col-auto prodCart">
-                    <a>Add to Cart<mat-icon aria-label="shopping_cart">shopping_cart</mat-icon></a>
+            <div class="row">
+                <div class="col d-flex align-items-center">
+                    <select class="quantity-select my-2">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <!-- Add to Cart and Add to Favorite buttons -->
+                    <div class="col-auto prodCart mx-2">
+                        <a>Add to Cart<mat-icon aria-label="shopping_cart">shopping_cart</mat-icon></a>
+                    </div>
+                    <div class="col-auto prodHeart p-0">
+                        <a><mat-icon aria-label="favorite">favorite</mat-icon></a>
+                    </div>
                 </div>
-                <div class="col-auto prodHeart px-2">
-                    <a><mat-icon aria-label="favorite">favorite</mat-icon></a>
-                </div>
+
             </div>
             <h5 class="fw-medium mt-3">
                 Description:
@@ -100,7 +104,7 @@
                     senectus nisi scelerisque parturient tortor nibh per viverra mattis aliquam.</p>
             </h5>
         </div>
-        <div class="col d-none d-md-block"></div>
+        <div class="col d-none d-lg-block"></div>
     </div>
     <mat-divider class="py-2"></mat-divider>
     <div class="row">
