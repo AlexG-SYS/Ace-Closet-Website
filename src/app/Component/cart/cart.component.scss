@@ -1,0 +1,31 @@
+.active {
+    text-decoration: 2px underline;
+    font-weight: 500;
+}
+
+.bag:hover {
+    color: #5C83CE;
+    cursor: pointer;
+}
+
+.link {
+    color: rgb(56, 56, 56);
+}
+
+.link:hover {
+    color: #5C83CE;
+    cursor: pointer;
+}
+
+.btn-outline-secondary {
+    border: solid 1px #dee2e6;
+}
+
+.fs-7 {
+    font-size: 15px;
+}
+
+.fs-8 {
+    font-size: 13px;
+    line-height: 1rem;
+}

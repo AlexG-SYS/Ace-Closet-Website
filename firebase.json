@@ -19,6 +19,7 @@
     }
   ],
   "hosting": {
+    "site": "ace-closet-website",
     "public": "dist/ace-closet-website/browser",
     "ignore": [
       "firebase.json",

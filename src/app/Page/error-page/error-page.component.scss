@@ -33,3 +33,14 @@ body {
   height: auto;
   margin-bottom: 20px;
 }
+
+.btn {
+  border: solid 1px black;
+}
+
+.btn:hover {
+  border: solid 1px #5C83CE;
+  color: white;
+  background-color: #5C83CE;
+
+}

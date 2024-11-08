@@ -1,1 +1,118 @@
-<p>cart works!</p>
+<div class="container text-center">
+    <div class="row justify-content-center">
+        <div class="col mt-4">
+            <h1 class="fw-medium mt-lg-3">My Shopping Cart</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col col-lg-2">
+            <h3 class="bag active text-end" routerLink="/cart">My Cart</h3>
+        </div>
+        <div class="col col-lg-2">
+            <h3 class="bag text-start" routerLink="/wish-list">Wishlist</h3>
+        </div>
+    </div>
+    <div class="row justify-content-center mx-1">
+        <div class="col-auto col-lg-4">
+            <!-- Item Row -->
+            <div class="row position-relative">
+                <button class="btn-close warn position-absolute top-0 end-0" aria-label="Close"
+                    (click)="removeItem()"></button>
+
+                <div class="col-5 col-md-4 d-flex align-items-center p-0">
+                    <img src="../../../assets/img/jacket.jpg" alt="Item Image" class="img-fluid rounded mx-auto">
+                </div>
+                <div class="col-7 text-start my-auto">
+                    <p class="m-0 fw-medium fs-7 pb-1">Black Zipper Jacket</p>
+                    <p class="m-0 fs-8">Size: M</p>
+                    <p class="m-0 fs-8">Color: Red</p>
+                    <p class="m-0 fs-8">Price: $25.00</p>
+                    <div class="input-group input-group-sm m-0 pe-4 pt-2">
+                        <button class="btn btn-outline-secondary" type="button" (click)="decreaseQuantity()">-</button>
+                        <input type="text" class="form-control text-center" value="{{quantity}}">
+                        <button class="btn btn-outline-secondary" type="button" (click)="increaseQuantity()">+</button>
+                    </div>
+                    <div class="pt-2">
+                        <a class="me-3 link fs-8" (click)="editItem()">Edit</a>
+                        <a class="link fs-8" (click)="moveToWishlist()">Move to
+                            Wishlist</a>
+                    </div>
+                </div>
+                <hr class="my-3">
+            </div>
+
+            <!-- Item Row -->
+            <div class="row position-relative">
+                <button class="btn-close warn position-absolute top-0 end-0" aria-label="Close"
+                    (click)="removeItem()"></button>
+
+                <div class="col-5 col-md-4 d-flex align-items-center p-0">
+                    <img src="../../../assets/img/jacket.jpg" alt="Item Image" class="img-fluid rounded mx-auto">
+                </div>
+                <div class="col-7 text-start my-auto">
+                    <p class="m-0 fw-medium fs-7 pb-1">Black Zipper Jacket</p>
+                    <p class="m-0 fs-8">Size: M</p>
+                    <p class="m-0 fs-8">Color: Red</p>
+                    <p class="m-0 fs-8">Price: $25.00</p>
+                    <div class="input-group input-group-sm m-0 pe-4 pt-2">
+                        <button class="btn btn-outline-secondary" type="button" (click)="decreaseQuantity()">-</button>
+                        <input type="text" class="form-control text-center" value="{{quantity}}">
+                        <button class="btn btn-outline-secondary" type="button" (click)="increaseQuantity()">+</button>
+                    </div>
+                    <div class="pt-2">
+                        <a class="me-3 link fs-8" (click)="editItem()">Edit</a>
+                        <a class="link fs-8" (click)="moveToWishlist()">Move to
+                            Wishlist</a>
+                    </div>
+                </div>
+                <hr class="my-3">
+            </div>
+
+            <!-- Item Row -->
+            <div class="row position-relative">
+                <button class="btn-close warn position-absolute top-0 end-0" aria-label="Close"
+                    (click)="removeItem()"></button>
+
+                <div class="col-5 col-md-4 d-flex align-items-center p-0">
+                    <img src="../../../assets/img/jacket.jpg" alt="Item Image" class="img-fluid rounded mx-auto">
+                </div>
+                <div class="col-7 text-start my-auto">
+                    <p class="m-0 fw-medium fs-7 pb-1">Black Zipper Jacket</p>
+                    <p class="m-0 fs-8">Size: M</p>
+                    <p class="m-0 fs-8">Color: Red</p>
+                    <p class="m-0 fs-8">Price: $25.00</p>
+                    <div class="input-group input-group-sm m-0 pe-4 pt-2">
+                        <button class="btn btn-outline-secondary" type="button" (click)="decreaseQuantity()">-</button>
+                        <input type="text" class="form-control text-center" value="{{quantity}}">
+                        <button class="btn btn-outline-secondary" type="button" (click)="increaseQuantity()">+</button>
+                    </div>
+                    <div class="pt-2">
+                        <a class="me-3 link fs-8" (click)="editItem()">Edit</a>
+                        <a class="link fs-8" (click)="moveToWishlist()">Move to
+                            Wishlist</a>
+                    </div>
+                </div>
+                <hr class="my-3">
+            </div>
+        </div>
+        <!-- Summary Section -->
+        <div class="col col-lg-3 justify-content-center ms-lg-4 mb-4">
+            <div class="card p-3">
+                <div class="row">
+                    <div class="col">
+                        <p class="mb-0 card-title text-start fw-medium fs-5">Subtotal:</p>
+                    </div>
+                    <div class="col">
+                        <p class="mb-0 card-title text-end fw-medium fs-5">$75.00</p>
+                    </div>
+                </div>
+                <div class="input-group my-3">
+                    <input type="text" class="form-control" placeholder="Coupon Code">
+                    <button class="btn btn-secondary" type="button">Apply</button>
+                </div>
+                <a href="/checkout" class="btn btn-primary w-100" type="button">Checkout</a>
+            </div>
+        </div>
+
+    </div>
+</div>

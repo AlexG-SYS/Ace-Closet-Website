@@ -1,18 +1,13 @@
-<div class="container py-4">
-    <div class="col-md-6 offset-md-3 text-center error-container">
-        <div class="card">
-            <div class="card-body">
-                <img src="../../../assets/broken-link.svg" alt="Broken Link" class="broken-link-svg" class="p-4"
-                    width="200px" height="auto" />
-                <h1 class="error-heading p-2">Error 404</h1>
-                <p class="error-message">
-                    Ooooops! The page you're looking for could not be found.
-                </p>
-                <p class="error-message pb-4">
-                    Please check the URL or go back to the
-                    <a routerLink="/">HOME PAGE</a>.
-                </p>
-            </div>
+<div class="container p-4">
+    <div class="d-flex justify-content-center mt-2">
+        <div class="d-flex flex-column align-items-center">
+            <img src="../assets/misc-under-maintenance.png" alt="misc-error" class="img-fluid z-1" width="360">
         </div>
     </div>
+    <h1 class="mb-0 fs-1 text-center pt-4">404</h1>
+    <h2 class="text-center">Page Not Found.</h2>
+    <p class="mb-10 mx-2 text-center">Please check the URL or go back to the Home Page.
+        <br>
+        <button type="button" class="btn my-3" routerLink="/">Home Page</button>
+    </p>
 </div>
