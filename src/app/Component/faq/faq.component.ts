@@ -10,14 +10,13 @@ import {
 } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-faq',
-  standalone: true,
-  imports: [MatDialogActions,
-    MatDialogClose,
-    MatDialogContent,
-    MatDialogTitle, MatButtonModule, MatIconModule],
-  templateUrl: './faq.component.html',
-  styleUrl: './faq.component.scss'
+    selector: 'app-faq',
+    imports: [MatDialogActions,
+        MatDialogClose,
+        MatDialogContent,
+        MatDialogTitle, MatButtonModule, MatIconModule],
+    templateUrl: './faq.component.html',
+    styleUrl: './faq.component.scss'
 })
 export class FaqComponent {
 

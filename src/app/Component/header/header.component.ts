@@ -6,18 +6,17 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [
-    RouterOutlet,
-    RouterLink,
-    MatInputModule,
-    MatIconModule,
-    MatBadgeModule,
-    ReactiveFormsModule
-  ],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
+    selector: 'app-header',
+    imports: [
+        RouterOutlet,
+        RouterLink,
+        MatInputModule,
+        MatIconModule,
+        MatBadgeModule,
+        ReactiveFormsModule
+    ],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
   signInFormError = '';

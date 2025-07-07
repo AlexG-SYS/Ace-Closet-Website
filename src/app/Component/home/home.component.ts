@@ -5,11 +5,10 @@ import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [RouterOutlet, RouterLink],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+    selector: 'app-home',
+    imports: [RouterOutlet, RouterLink],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnDestroy {
   public targetDate!: Date; // Replace with your desired future date

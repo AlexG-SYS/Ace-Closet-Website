@@ -6,11 +6,10 @@ import { BehaviorSubject } from 'rxjs';
 import { QuickViewProductComponent } from '../quick-view-product/quick-view-product.component';
 
 @Component({
-  selector: 'app-product-list',
-  standalone: true,
-  imports: [RouterLink, MatIconModule],
-  templateUrl: './product-list.component.html',
-  styleUrl: './product-list.component.scss'
+    selector: 'app-product-list',
+    imports: [RouterLink, MatIconModule],
+    templateUrl: './product-list.component.html',
+    styleUrl: './product-list.component.scss'
 })
 export class ProductListComponent implements OnInit {
   category: string | null = null;

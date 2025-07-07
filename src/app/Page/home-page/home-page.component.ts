@@ -6,11 +6,10 @@ import { RouterOutlet } from '@angular/router';
 
 
 @Component({
-  selector: 'app-home-page',
-  standalone: true,
-  imports: [HeaderComponent, HomeComponent, RouterOutlet, FooterComponent],
-  templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.scss'
+    selector: 'app-home-page',
+    imports: [HeaderComponent, HomeComponent, RouterOutlet, FooterComponent],
+    templateUrl: './home-page.component.html',
+    styleUrl: './home-page.component.scss'
 })
 export class HomePageComponent {
 

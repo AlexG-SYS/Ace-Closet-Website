@@ -8,11 +8,10 @@ import { QuickViewProductComponent } from '../quick-view-product/quick-view-prod
 
 
 @Component({
-  selector: 'app-product-details',
-  standalone: true,
-  imports: [MatIconModule, MatDividerModule, QuickViewProductComponent],
-  templateUrl: './product-details.component.html',
-  styleUrl: './product-details.component.scss'
+    selector: 'app-product-details',
+    imports: [MatIconModule, MatDividerModule, QuickViewProductComponent],
+    templateUrl: './product-details.component.html',
+    styleUrl: './product-details.component.scss'
 })
 export class ProductDetailsComponent {
 

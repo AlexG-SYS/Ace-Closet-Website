@@ -6,11 +6,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-quick-view-product',
-  standalone: true,
-  imports: [MatIconModule, MatDividerModule, MatDialogModule],
-  templateUrl: './quick-view-product.component.html',
-  styleUrl: './quick-view-product.component.scss'
+    selector: 'app-quick-view-product',
+    imports: [MatIconModule, MatDividerModule, MatDialogModule],
+    templateUrl: './quick-view-product.component.html',
+    styleUrl: './quick-view-product.component.scss'
 })
 export class QuickViewProductComponent {
 
