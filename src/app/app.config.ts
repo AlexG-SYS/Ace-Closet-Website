@@ -21,7 +21,17 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     provideAnimationsAsync(),
-    provideFirebaseApp(() => initializeApp({})),
+    provideFirebaseApp(() =>
+      initializeApp({
+        apiKey: 'AIzaSyAyGex2L4ZI3ZJT0e6R65yYXt3IfDe9V6E',
+        authDomain: 'ace-closet-website.firebaseapp.com',
+        projectId: 'ace-closet-website',
+        storageBucket: 'ace-closet-website.appspot.com',
+        messagingSenderId: '1053899946118',
+        appId: '1:1053899946118:web:0288252318387240e0f907',
+        measurementId: 'G-Q5K7BCCZF6',
+      })
+    ),
     provideAuth(() => getAuth()),
     provideAnalytics(() => getAnalytics()),
     ScreenTrackingService,

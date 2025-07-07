@@ -25,7 +25,7 @@ export class HomeComponent implements OnDestroy {
 
 
   ngOnInit() {
-    this.targetDate = new Date(2024, 7, 11, 23, 59, 59);
+    this.targetDate = new Date(2025, 7, 11, 23, 59, 59);
     this.updateTimer();
     this.intervalId = setInterval(() => this.updateTimer(), 1000);
   }
