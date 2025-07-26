@@ -212,31 +212,14 @@ a:focus {
 }
 
 
-.product__item__pic .label {
-    color: #fff;
-    font-size: 11px;
-    font-weight: 550;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    display: inline-block;
-    padding: 4px 15px 2px;
-    background: #e53637;
-    border-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    position: absolute;
-    left: 4px;
-    top: -6px;
-}
-
-
 .quick-view {
     background-color: #f5f5f5da;
     color: #585858;
 }
 
 .quick-view:hover {
-    background-color: #ffffff;
-    color: #0b090c;
+  background-color: #00000093;
+  color: #ffffff;
 }
 
 /* Media Queries */

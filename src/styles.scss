@@ -91,7 +91,7 @@ body {
   width: 9rem;
   text-align: center;
   display: none;
-  background-color: #f5f5f5da;
+  background-color: #dfdfdfda;
   color: #585858;
   padding: 5px 10px;
   border-radius: 5px;
@@ -109,8 +109,8 @@ body {
 }
 
 .quick-view:hover {
-  background-color: #ffffff;
-  color: #0b090c;
+  background-color: #00000093;
+  color: #ffffff;
 }
 
 
@@ -142,7 +142,6 @@ body {
 .productColor {
   width: .9rem;
   height: .9rem;
-  background: #8b4d2f;
   border-radius: 50%;
 }
 
@@ -170,8 +169,28 @@ body {
 }
 
 .gstFont {
-  font-size: x-small;
+  font-size: 11px !important;
   line-height: 1;
+}
+
+.productLabel{
+color: #fff;
+    font-size: 11px;
+    font-weight: 550;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 4px 15px 2px;
+    background: #e53637;
+    border-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    position: absolute;
+    left: 4px;
+    top: -6px;
+}
+
+.fs-7{
+  font-size: 15px !important;
 }
 
 @media only screen and (max-width: 767px) {

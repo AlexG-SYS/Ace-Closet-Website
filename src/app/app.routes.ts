@@ -22,10 +22,22 @@ export const routes: Routes = [
         component: ProductListComponent,
       },
       {
+        path: 'tags/:tags',
+        title: 'Shop | Ace Closet Bz',
+        component: ProductListComponent,
+      },
+      {
         path: 'category/:category/product/:product',
         title: 'Shop | Ace Closet Bz',
         component: ProductDetailsComponent,
       },
+
+      {
+        path: 'tags/:tags/product/:product',
+        title: 'Shop | Ace Closet Bz',
+        component: ProductDetailsComponent,
+      },
+
       {
         path: 'wish-list',
         title: 'Wish List | Ace Closet Bz',

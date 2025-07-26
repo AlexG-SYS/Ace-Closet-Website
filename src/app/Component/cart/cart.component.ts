@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 
 @Component({
-    selector: 'app-cart',
-    imports: [RouterOutlet, RouterLink],
-    templateUrl: './cart.component.html',
-    styleUrl: './cart.component.scss'
+  selector: 'app-cart',
+  imports: [RouterLink],
+  templateUrl: './cart.component.html',
+  styleUrl: './cart.component.scss',
 })
 export class CartComponent {
   quantity: number = 1;

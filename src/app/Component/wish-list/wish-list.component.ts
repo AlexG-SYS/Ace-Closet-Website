@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 
 @Component({
-    selector: 'app-wish-list',
-    imports: [RouterOutlet, RouterLink],
-    templateUrl: './wish-list.component.html',
-    styleUrl: './wish-list.component.scss'
+  selector: 'app-wish-list',
+  imports: [RouterLink],
+  templateUrl: './wish-list.component.html',
+  styleUrl: './wish-list.component.scss',
 })
 export class WishListComponent {
   removeItem() {
