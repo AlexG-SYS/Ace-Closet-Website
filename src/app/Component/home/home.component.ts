@@ -101,7 +101,7 @@ export class HomeComponent implements OnDestroy {
 
   loadProductList() {
     this.productService
-      .getProductsByTags('Sale', this.lastProductDoc)
+      .getProductsByTags('Sale', 8, this.lastProductDoc)
       .then(({ products, lastDoc }) => {
         this.products = [...this.products, ...products];
         this.lastProductDoc = lastDoc;

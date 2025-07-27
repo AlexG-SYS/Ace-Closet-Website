@@ -167,8 +167,13 @@
                     </div>
                     }@else {
                     <div class="col">
-                        <div class="shop__product__option__left d-flex justify-content-start">
+                        @if(searchQuery){
+                        <p class="fs-4 text-capitalize pb-2"> Search Result For: <span
+                                class="fst-italic fw-medium">{{searchQuery}}</span>
+                        </p>
+                        }
 
+                        <div class=" shop__product__option__left d-flex justify-content-start">
                             <p class="d-none d-lg-block">Results: {{ filteredProducts.length }}</p>
                             <div class="d-block d-lg-none dropDownd-flex">
                                 <p class="button dropdown-toggle px-2" data-bs-toggle="dropdown">
@@ -202,7 +207,7 @@
                 @for (product of filteredProducts; track product; let index = $index, e = $even)
                 {
                 <div class="col-6 col-md-4 col-lg-4">
-                    <div class="product__item" (click)="viewItem(product.id)">
+                    <div class="product__item" (click)="viewItem(product)">
                         <div class="product__item__pic set-bg" [style]="{
                 'background-image': 'url(' + product.imagesURL[0] + ')'
               }">
@@ -241,22 +246,17 @@
                 </div>
                 }
             </div>
+            @if(hasMoreProducts){
             <div class="row">
                 <div class="col-lg-12">
                     <div class="product__pagination text-center my-4">
                         <button class="btn btn-primary " (click)="loadProductList(true)" [disabled]="isProcessing">
-                            @if(isProcessing){
-                            <div class="spinner-border spinner-border-sm" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                            } @else {
-                            Load More
-                            }
+                            {{ isProcessing ? 'Loading...' : 'Load More' }}
                         </button>
                     </div>
                 </div>
-
             </div>
+            }
         </div>
     </div>
 </div>

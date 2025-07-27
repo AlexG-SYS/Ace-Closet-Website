@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, RouterLink, Router } from '@angular/router';
+import { debounceTime, Subject } from 'rxjs';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
+import { FormsModule } from '@angular/forms';
 import {
   ReactiveFormsModule,
   FormGroup,
   FormControl,
   Validators,
 } from '@angular/forms';
+import { ProductsService } from '../../Service/products.service';
 
 @Component({
   selector: 'app-header',
@@ -18,11 +21,16 @@ import {
     MatIconModule,
     MatBadgeModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+  searchText = new FormControl('');
+
+  searchSuggestions: any[] = [];
+
   signInFormError = '';
   signInForm = new FormGroup({
     signInEmail: new FormControl('', [Validators.required, Validators.email]),
@@ -60,7 +68,10 @@ export class HeaderComponent {
 
   sideNavHidden = false; // Initially hidden
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    private productService: ProductsService
+  ) {}
 
   toggleSideNav() {
     this.sideNavHidden = !this.sideNavHidden;
@@ -161,5 +172,60 @@ export class HeaderComponent {
       return { passwordMismatch: true };
     }
     return null;
+  }
+
+  onSearchInput() {
+    let searchTerm = this.searchText.value?.toLowerCase();
+
+    this.fetchSearchSuggestions(searchTerm!, 3);
+  }
+
+  onSearchSubmit() {
+    // Get the value or fallback to empty string
+    let searchTerm = this.searchText.value || '';
+
+    // If it's just whitespace, exit
+    if (!searchTerm.trim()) return;
+
+    // Clean the input
+    const queryText = searchTerm.trim().toLowerCase();
+
+    // Optional: Clear suggestion list
+    this.searchSuggestions = [];
+
+    // Navigate with query parameter
+    this.router.navigate(['/search'], {
+      queryParams: { q: queryText },
+    });
+
+    this.searchText.setValue('');
+  }
+
+  goToProduct(product: any) {
+    console.log('View Product: ' + product.id);
+    let basePath = '/category/' + product.category;
+    const url = `${basePath}/product/${product.id}`;
+
+    const isMobile = /Mobi|Android/i.test(window.navigator.userAgent);
+
+    if (isMobile) {
+      // Mobile navigation
+      this.router.navigate([basePath, 'product', product.id]);
+    } else {
+      // Desktop navigation
+      window.open(url, '_blank');
+    }
+  }
+
+  async fetchSearchSuggestions(text: string, limit: number) {
+    if (!text) {
+      this.searchSuggestions = [];
+      return;
+    }
+
+    this.searchSuggestions = await this.productService.searchProductsByText(
+      text,
+      limit
+    );
   }
 }

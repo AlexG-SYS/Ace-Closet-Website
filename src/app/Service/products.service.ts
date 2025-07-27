@@ -28,6 +28,7 @@ export class ProductsService {
 
   // ---------- LOAD MORE: All Products ----------
   async getAllProducts(
+    docLimit: number,
     lastDoc: QueryDocumentSnapshot<DocumentData> | null = null
   ): Promise<{
     products: any[];
@@ -39,7 +40,7 @@ export class ProductsService {
         where('status', '==', 'active'),
         where('online', '==', true),
         orderBy('price', 'asc'),
-        limit(3),
+        limit(docLimit),
       ];
 
       if (lastDoc) {
@@ -57,6 +58,9 @@ export class ProductsService {
       const newLastDoc =
         querySnapshot.docs[querySnapshot.docs.length - 1] || null;
 
+      console.log('Products fetched:', products.length);
+      console.log('New lastDoc:', newLastDoc?.id);
+
       return { products, lastDoc: newLastDoc };
     } catch (error) {
       console.error('Error retrieving products:', error);
@@ -67,6 +71,7 @@ export class ProductsService {
   // ---------- LOAD MORE: By Category ----------
   async getProductsByCategory(
     category: string,
+    docLimit: number,
     lastDoc: QueryDocumentSnapshot<DocumentData> | null = null
   ): Promise<{
     products: any[];
@@ -78,7 +83,7 @@ export class ProductsService {
         where('online', '==', true),
         where('category', '==', category),
         orderBy('price', 'asc'),
-        limit(12),
+        limit(docLimit),
       ];
 
       if (lastDoc) {
@@ -106,6 +111,7 @@ export class ProductsService {
   // ---------- LOAD MORE: By Tags ----------
   async getProductsByTags(
     tags: string,
+    docLimit: number,
     lastDoc: QueryDocumentSnapshot<DocumentData> | null = null
   ): Promise<{
     products: any[];
@@ -117,7 +123,7 @@ export class ProductsService {
         where('online', '==', true),
         where('tags', '==', tags),
         orderBy('price', 'asc'),
-        limit(12),
+        limit(docLimit),
       ];
 
       if (lastDoc) {
@@ -161,6 +167,39 @@ export class ProductsService {
       throw new Error(
         'Failed to retrieve product details. Please try again later.'
       );
+    }
+  }
+
+  // ---------- Search Products (for live suggestions) ----------
+  async searchProductsByText(
+    searchText: string,
+    docLimit: number = 10
+  ): Promise<any[]> {
+    try {
+      const productsQuery = query(
+        this.productsCollection,
+        where('status', '==', 'active'),
+        where('online', '==', true),
+        limit(30)
+      );
+
+      const querySnapshot = await getDocs(productsQuery);
+
+      const allProducts = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(), // 👈 this adds all fields like name, description, brand, price, etc.
+      }));
+
+      const lowerText = searchText.toLowerCase();
+
+      const matchingProducts = allProducts.filter((product: any) => {
+        return product.description?.toLowerCase().includes(lowerText);
+      });
+
+      return matchingProducts.slice(0, docLimit); // return trimmed list
+    } catch (error) {
+      console.error('Error searching products:', error);
+      return [];
     }
   }
 }

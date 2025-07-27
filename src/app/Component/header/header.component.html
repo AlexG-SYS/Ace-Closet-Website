@@ -32,13 +32,35 @@
                 </div>
 
                 <!-- Search -->
-                <div class="col-lg input-group my-2 px-4">
-                    <!-- Side Nav Button -->
-                    <input type="text" placeholder="Search..." class="form-control" aria-label="Search">
-                    <button class="btn btn-outline-secondary input-group-text d-flex align-items-center" type="button">
+                <div class="col-lg input-group my-2 px-4 position-relative">
+                    <input type="text" placeholder="Search..." class="form-control" [formControl]="searchText"
+                        (input)="onSearchInput()" (keydown.enter)="onSearchSubmit()" aria-label="Search"
+                        autocomplete="none" />
+                    <button class="btn btn-outline-secondary input-group-text d-flex align-items-center" type="button"
+                        (click)="onSearchSubmit()">
                         <mat-icon aria-label="search">search</mat-icon>
                     </button>
+                    <br>
+                    <!-- Search Suggestions -->
+                    @if(searchSuggestions.length > 0){
+                    <ul class="list-group position-absolute w-auto z-3" style="top: 100%;">
+                        @for( product of searchSuggestions; track product){
+                        <li class="list-group-item list-group-item-action d-flex align-items-center"
+                            (click)="goToProduct(product)">
+                            <img [src]="product.imagesURL[0]" alt="Product Image" class="me-2 smallImageIcon" />
+                            <span>{{ product.productName }} - {{ product.size }} &nbsp;</span>
+                            <div class="d-flex align-items-center">
+                                <span class="rounded-circle border"
+                                    [style]="{ 'background-color': product.productColor }"
+                                    style="width: 15px; height: 15px; display: inline-block;">
+                                </span>
+                            </div>
+                        </li>
+                        }
+                    </ul>
+                    }
                 </div>
+
                 <!-- login, signup, fav, cart -->
                 <div class="col-sm-auto d-flex align-items-center d-none d-sm-none d-lg-block ">
                     <div class="row my-2 py-2">
@@ -177,7 +199,7 @@
                     <a href="https://www.facebook.com/AceClosetBz" target=”_blank”><img
                             src="../../../assets/facebook-logo.png" class="mx-1" alt="Facebook Icon" height="auto"
                             width="25px"></a>
-                    <a href="https://www.instagram.com/ace_closet_bz/" target=”_blank”><img
+                    <a href="https://www.instagram.com/acecloset.bz/" target=”_blank”><img
                             src="../../../assets/instagram-logo.png" class="ms-1" alt="Instagram Icon" height="auto"
                             width="25px"></a>
                 </div>

@@ -17,6 +17,11 @@ export const routes: Routes = [
     children: [
       { path: '', title: 'Ace Closet Bz', component: HomeComponent },
       {
+        path: 'search',
+        title: 'Search Results | Ace Closet Bz',
+        component: ProductListComponent,
+      },
+      {
         path: 'category/:category',
         title: 'Shop | Ace Closet Bz',
         component: ProductListComponent,

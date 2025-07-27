@@ -37,6 +37,34 @@ a:hover {
   color: black;
 }
 
+.smallImageIcon {
+  height: 3rem;
+  width: auto;
+}
+
+.list-group-item-action:hover {
+  cursor: pointer;
+}
+
+.list-group-item:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.list-group-item:last-child {
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.input-group> :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.w-auto {
+  width: 91% !important;
+}
+
 .nav-link {
   color: black;
   font-size: 15px;
@@ -89,4 +117,10 @@ a:hover {
 
 .forgotPwdLink:hover {
   color: #557bc2;
+}
+
+@media only screen and (max-width: 767px) {
+  .w-auto {
+    width: 88% !important;
+  }
 }

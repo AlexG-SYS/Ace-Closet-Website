@@ -7,6 +7,8 @@ import { QuickViewProductComponent } from '../quick-view-product/quick-view-prod
 import { ProductsService } from '../../Service/products.service';
 import { DecimalPipe } from '@angular/common';
 import { DocumentData, QueryDocumentSnapshot } from '@angular/fire/firestore';
+import { combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-list',
@@ -23,6 +25,7 @@ export class ProductListComponent implements OnInit {
   tagsSubject = new BehaviorSubject<string | null>(null);
   isProcessing = false;
   priceSort: string = 'Low To High';
+  hasMoreProducts: boolean = true;
 
   filterSizes: string[] = [];
   filterPriceRanges: { min: number; max: number }[] = [];
@@ -34,6 +37,7 @@ export class ProductListComponent implements OnInit {
   selectedPriceRanges: { min: number; max: number }[] = [];
   selectedColors: string[] = [];
   selectedCategories: string[] = [];
+  searchQuery: string | null = null;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -43,19 +47,29 @@ export class ProductListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe((params) => {
+    combineLatest([
+      this.activatedRoute.params,
+      this.activatedRoute.queryParamMap,
+    ]).subscribe(([params, queryParams]) => {
       this.category = params['category'];
       this.tags = params['tags'];
+      this.searchQuery = queryParams.get('q');
+
       this.categorySubject.next(this.category);
       this.tagsSubject.next(this.tags);
-    });
 
-    this.loadProductList(false);
+      console.log('Search query:', this.searchQuery);
+
+      // Only load products if no search query is present
+      if (!this.searchQuery) {
+        this.loadProductList(false);
+      } else {
+        this.fetchSearchSuggestions(this.searchQuery, 12);
+      }
+    });
   }
 
-  viewItem(productID: string) {
-    console.log('View Product: ' + productID);
-
+  viewItem(product: any) {
     // Determine base path
     let basePath = '';
     if (this.category) {
@@ -63,17 +77,17 @@ export class ProductListComponent implements OnInit {
     } else if (this.tags) {
       basePath = `/tags/${this.tags}`;
     } else {
-      console.warn('No category or tags found!');
-      return;
+      console.log('No category or tags found! Using Default!');
+      basePath = `/category/${product.category}`;
     }
 
-    const url = `${basePath}/product/${productID}`;
+    const url = `${basePath}/product/${product.id}`;
 
     const isMobile = /Mobi|Android/i.test(window.navigator.userAgent);
 
     if (isMobile) {
       // Mobile navigation
-      this.router.navigate([basePath, 'product', productID]);
+      this.router.navigate([basePath, 'product', product.id]);
     } else {
       // Desktop navigation
       window.open(url, '_blank');
@@ -108,29 +122,64 @@ export class ProductListComponent implements OnInit {
     }>;
 
     if (this.category === 'all') {
-      fetchPromise = this.productService.getAllProducts(this.lastDoc);
+      fetchPromise = this.productService.getAllProducts(12, this.lastDoc);
     } else if (this.tags) {
       fetchPromise = this.productService.getProductsByTags(
         this.tags!,
+        12,
         this.lastDoc
       );
     } else {
       fetchPromise = this.productService.getProductsByCategory(
         this.category!,
+        12,
         this.lastDoc
       );
     }
 
     fetchPromise
       .then(({ products, lastDoc }) => {
-        this.products = [...this.products, ...products];
-        this.lastDoc = lastDoc;
-        this.isProcessing = false;
+        if (products.length === 0) {
+          this.hasMoreProducts = false; // No more products to load
+        } else {
+          this.products = [...this.products, ...products];
+          this.filteredProducts = [...this.products];
+          this.lastDoc = lastDoc;
 
-        // Only apply filters after first (non-paginated) load
-        if (!loadMore) {
+          if (!loadMore) {
+            this.getFilterOptions();
+          }
+
           this.getFilterOptions();
+          this.sortPrice(this.priceSort);
+
+          // if fewer than page size, assume it's the last page
+          if (products.length < 12) {
+            this.hasMoreProducts = false;
+          }
         }
+
+        this.isProcessing = false;
+      })
+
+      .catch((error) => {
+        console.error('Error loading products:', error);
+        this.isProcessing = false;
+      });
+  }
+
+  fetchSearchSuggestions(searchTerm: string, limit: number) {
+    this.isProcessing = true;
+
+    this.productService
+      .searchProductsByText(searchTerm, limit)
+      .then((products) => {
+        this.products = [...products];
+        this.filteredProducts = [...products];
+        this.getFilterOptions();
+        this.sortPrice(this.priceSort);
+        this.hasMoreProducts = false;
+        this.isProcessing = false;
       })
       .catch((error) => {
         console.error('Error loading products:', error);

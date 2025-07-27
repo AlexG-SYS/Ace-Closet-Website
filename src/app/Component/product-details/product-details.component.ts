@@ -144,15 +144,17 @@ export class ProductDetailsComponent implements OnInit {
     }>;
 
     if (this.category === 'all') {
-      fetchPromise = this.productService.getAllProducts(this.lastDoc);
+      fetchPromise = this.productService.getAllProducts(4, this.lastDoc);
     } else if (this.tags) {
       fetchPromise = this.productService.getProductsByTags(
         this.tags!,
+        4,
         this.lastDoc
       );
     } else {
       fetchPromise = this.productService.getProductsByCategory(
         this.category!,
+        4,
         this.lastDoc
       );
     }
