@@ -34,7 +34,6 @@ export class ProductsService {
     products: any[];
     lastDoc: QueryDocumentSnapshot<DocumentData> | null;
   }> {
-    console.log(lastDoc);
     try {
       let constraints: any[] = [
         where('status', '==', 'active'),
@@ -57,9 +56,6 @@ export class ProductsService {
 
       const newLastDoc =
         querySnapshot.docs[querySnapshot.docs.length - 1] || null;
-
-      console.log('Products fetched:', products.length);
-      console.log('New lastDoc:', newLastDoc?.id);
 
       return { products, lastDoc: newLastDoc };
     } catch (error) {

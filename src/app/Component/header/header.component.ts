@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet, RouterLink, Router } from '@angular/router';
-import { debounceTime, Subject } from 'rxjs';
+import {
+  RouterOutlet,
+  RouterLink,
+  Router,
+  RouterModule,
+} from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -12,11 +16,15 @@ import {
   Validators,
 } from '@angular/forms';
 import { ProductsService } from '../../Service/products.service';
+import { UsersService } from '../../Service/users.service';
+import { Timestamp } from '@angular/fire/firestore';
+import { GlobalService } from '../../Service/global.service';
 
 @Component({
   selector: 'app-header',
   imports: [
     RouterLink,
+    RouterModule,
     MatInputModule,
     MatIconModule,
     MatBadgeModule,
@@ -26,7 +34,8 @@ import { ProductsService } from '../../Service/products.service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  globalUser: any;
   searchText = new FormControl('');
 
   searchSuggestions: any[] = [];
@@ -62,7 +71,7 @@ export class HeaderComponent {
     ]),
     registerPhoneNumber: new FormControl('', [
       Validators.required,
-      Validators.pattern('^[0-9]{7}$'), // Phone number should be exactly 7 digits
+      Validators.pattern(/^\d{3}-\d{4}$/), // Pattern for phone number
     ]),
   });
 
@@ -70,19 +79,79 @@ export class HeaderComponent {
 
   constructor(
     private router: Router,
-    private productService: ProductsService
+    private productService: ProductsService,
+    private userServices: UsersService,
+    private globalService: GlobalService
   ) {}
+
+  async ngOnInit() {
+    await this.userServices.initializeUser();
+    this.checkForUser(); // ✅ runs only after user is initialized
+  }
+
+  checkForUser() {
+    let user = this.globalService.getUser();
+
+    if (user) {
+      this.globalUser = user;
+      console.log('User found in Global Service:', this.globalUser.name);
+    } else {
+      this.globalUser = null;
+      console.log('No user found in Global Service.');
+    }
+  }
 
   toggleSideNav() {
     this.sideNavHidden = !this.sideNavHidden;
   }
 
+  isLoggedIn = false;
   submitLogin() {
+    this.isProcessing = true;
+
     this.signInFormError = '';
+    var email = this.signInForm.get('signInEmail')?.value || '';
+    var password = this.signInForm.get('signInPassword')?.value || '';
+
     if (this.signInForm.valid) {
-      console.warn(this.signInForm.value);
+      this.userServices
+        .signInUser(email, password)
+        .then((cred) => {
+          this.globalService.setUser(cred);
+          this.checkForUser();
+
+          this.signInFormError = '';
+          this.isProcessing = false;
+          this.isLoggedIn = true;
+
+          this.cancelLogin();
+        })
+        .catch((err) => {
+          this.signInFormError = 'Invalid Credentials. Please try again.';
+          console.error('Sign-in error:', err.message);
+          this.isProcessing = false;
+        });
     } else {
-      this.signInFormError = 'Invalid Input';
+      this.isProcessing = false;
+
+      const emailErrors = this.signInForm.get('signInEmail')?.errors;
+      const passwordErrors = this.signInForm.get('signInPassword')?.errors;
+
+      // Email field error handling
+      if (emailErrors) {
+        if (emailErrors['required']) {
+          this.signInFormError = 'Email is required.';
+        } else if (emailErrors['email']) {
+          this.signInFormError = 'Please enter a valid email address.';
+        }
+      }
+
+      // Password field error handling
+      else if (passwordErrors) {
+        if (passwordErrors['required']) {
+          this.signInFormError = 'Password is required.';
+        }
+      }
     }
   }
 
@@ -97,10 +166,44 @@ export class HeaderComponent {
     }
   }
 
+  isProcessing = false;
+  isRegistered = false;
   submitRegister() {
     this.registerFormError = '';
     if (this.registerForm.valid) {
-      console.warn(this.registerForm.value);
+      this.isProcessing = true;
+
+      var email = this.registerForm.get('registerEmail')?.value;
+      var password = this.registerForm.get('registerPassword')?.value;
+
+      this.userServices
+        .registerUser(email!, password!, {
+          name: this.registerForm.get('registerFullName')?.value,
+          phoneNumber: this.registerForm.get('registerPhoneNumber')?.value,
+          role: 'customer', // Default role
+          status: 'active', // Default status
+          email: this.registerForm.get('registerEmail')?.value,
+          accountBalance: 0, // Default account balance
+          createdAt: Timestamp.now(), // Current timestamp
+        })
+        .then(() => {
+          this.registerForm.reset();
+          console.log('Registration successful! Login in to continue.');
+          this.isProcessing = false;
+          this.isRegistered = true;
+        })
+        .catch((error) => {
+          this.isProcessing = false;
+          this.isRegistered = false;
+          console.error('Registration error:', error.message);
+          if (error.code === 'auth/email-already-in-use') {
+            this.registerFormError =
+              'Email already in use. Please log in or reset your password.';
+          } else {
+            this.registerFormError =
+              'Registration Failed. Please try again later.';
+          }
+        });
     } else {
       const fullNameErrors = this.registerForm.get('registerFullName')?.errors;
       const emailErrors = this.registerForm.get('registerEmail')?.errors;
@@ -156,10 +259,22 @@ export class HeaderComponent {
         if (phoneNumberErrors['required']) {
           this.registerFormError = 'Phone number is required.';
         } else if (phoneNumberErrors['pattern']) {
-          this.registerFormError = 'Phone number must be exactly 7 digits.';
+          this.registerFormError = 'Invalid format. Use xxx-xxxx.';
         }
       }
     }
+  }
+
+  cancelRegister() {
+    this.registerForm.reset();
+    this.registerFormError = '';
+    this.isProcessing = false;
+    this.isRegistered = false;
+  }
+
+  cancelLogin() {
+    this.signInForm.reset();
+    this.signInFormError = '';
   }
 
   passwordMatchValidator(
@@ -177,7 +292,7 @@ export class HeaderComponent {
   onSearchInput() {
     let searchTerm = this.searchText.value?.toLowerCase();
 
-    this.fetchSearchSuggestions(searchTerm!, 3);
+    this.fetchSearchSuggestions(searchTerm!, 5);
   }
 
   onSearchSubmit() {
@@ -210,10 +325,10 @@ export class HeaderComponent {
 
     if (isMobile) {
       // Mobile navigation
-      this.router.navigate([basePath, 'product', product.id]);
+      window.open(url, '_self');
     } else {
       // Desktop navigation
-      window.open(url, '_blank');
+      window.open(url, '_self');
     }
   }
 

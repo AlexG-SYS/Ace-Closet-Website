@@ -3,7 +3,7 @@
         <button mat-dialog-close class="btn-close" aria-label="Close"></button>
     </div>
     <div class="row">
-        <div class="col pb-4">
+        <div class="col pb-2">
             <div id="carouselIndicatorsQuickView" class="carousel slide">
                 <div class="carousel-indicators">
                     @for(img of product.imagesURL; track img; let index = $index){
@@ -31,12 +31,23 @@
                     <span class="visually-hidden">Next</span>
                 </button>
                 }
-
             </div>
         </div>
-        <div class="col pb-4">
+        <div class="col pb-2">
             <h1 class="mb-0 fw-medium">{{product.productName}}</h1>
+            @if(product.discountPercentage > 0){
+            <span class="d-flex align-items-center">
+                <h2 class="mb-0 fw-medium text-danger">(-{{product.discountPercentage}}%)</h2>
+                &nbsp;
+                <h2 class="mb-0 fw-medium text-danger text-center">${{product.price - (product.price *
+                    (product.discountPercentage /
+                    100)) | number:'1.2-2'}}</h2>
+            </span>
+            <h2 class="mb-0 fw-medium diagonal-strike ">${{product.price | number:'1.2-2'}}</h2>
+            }@else {
             <h2 class="mb-0 fw-medium">${{product.price | number: '1.2-2'}}</h2>
+            }
+
             <h6 class="gstFont m-0">+ GST AT CHECKOUT</h6>
             <mat-divider class="my-3"></mat-divider>
             <h5 class="fw-medium fs-7">
@@ -99,6 +110,11 @@
                 Description:
                 <p class="fw-normal pt-2">{{product.description}}</p>
             </h5>
+            <div class="col-auto d-flex justify-content-center pt-2">
+                <button type="button" class="btn btn-primary d-flex align-items-center" (click)="viewItem(product.id)">
+                    See Product Detials &nbsp;<mat-icon aria-label="arrow_back" class="my-auto">arrow_forward</mat-icon>
+                </button>
+            </div>
         </div>
     </div>
 </mat-dialog-content>

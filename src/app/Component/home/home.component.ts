@@ -27,6 +27,7 @@ export class HomeComponent implements OnDestroy {
 
   category: string | null = 'null';
   products: any[] = [];
+  dealWeekProduct: any[] = [];
   lastProductDoc: QueryDocumentSnapshot | null = null;
 
   constructor(
@@ -37,14 +38,27 @@ export class HomeComponent implements OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.targetDate = new Date(2025, 7, 11, 23, 59, 59);
+    this.targetDate = this.getUpcomingSundayMidnight();
     this.updateTimer();
     this.intervalId = setInterval(() => this.updateTimer(), 1000);
     this.loadProductList();
+    this.loadDealOfTheWeekProdct();
   }
 
   ngOnDestroy() {
     clearInterval(this.intervalId);
+  }
+
+  getUpcomingSundayMidnight(): Date {
+    const now = new Date();
+    const day = now.getDay(); // Sunday = 0, Monday = 1, ..., Saturday = 6
+    const daysUntilSunday = (7 - day) % 7;
+
+    const upcomingSunday = new Date(now);
+    upcomingSunday.setDate(now.getDate() + daysUntilSunday);
+    upcomingSunday.setHours(0, 0, 0, 0); // Set to 00:00:00.000
+
+    return upcomingSunday;
   }
 
   updateTimer() {
@@ -108,6 +122,17 @@ export class HomeComponent implements OnDestroy {
       })
       .catch((error) => {
         console.error('Error loading products by tags:', error);
+      });
+  }
+
+  loadDealOfTheWeekProdct() {
+    this.productService
+      .getProductsByTags('Deal of the Week', 1)
+      .then(({ products }) => {
+        this.dealWeekProduct = products;
+      })
+      .catch((error) => {
+        console.error('Error loading Sale of the Week product:', error);
       });
   }
 }

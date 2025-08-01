@@ -7,7 +7,7 @@
 
 .carousel-indicators [data-bs-target] {
     background-color: #d6d6d6;
-    
+
 }
 
 .carousel-control-prev-icon {
@@ -20,7 +20,7 @@
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.959));
+    filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.959));
 }
 
 
@@ -56,31 +56,32 @@ h5 {
     transition: background-color 0.3s ease;
 }
 
-.size-btn.lg{
+.size-btn.lg {
     width: 4.25rem;
     border-radius: 45%;
 }
 
 .size-btn.disable {
-  color: #54545493;
-  border: 1px solid #54545493;
-  background-color: #ffffff00;
-  cursor: not-allowed;
-  position: relative; /* required for ::after to position properly */
-  overflow: hidden;
+    color: #54545493;
+    border: 1px solid #54545493;
+    background-color: #ffffff00;
+    cursor: not-allowed;
+    position: relative;
+    /* required for ::after to position properly */
+    overflow: hidden;
 }
 
 /* Diagonal line overlay */
 .size-btn.disable::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: -10%;
-  width: 120%;
-  height: 1px;
-  background-color: #54545493;
-  transform: rotate(-45deg);
-  pointer-events: none;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -10%;
+    width: 120%;
+    height: 1px;
+    background-color: #54545493;
+    transform: rotate(-45deg);
+    pointer-events: none;
 }
 
 .size-btn:hover {
@@ -97,9 +98,9 @@ h5 {
 }
 
 .size-btn.active {
-  background-color: #000;
-  color: #fff;
-  border-color: #000;
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
 }
 
 /* Quantity Dropdown */
@@ -124,6 +125,7 @@ h5 {
 }
 
 .prodCart {
+    border-radius: .5rem;
     background-color: #5c84ce20;
 }
 
@@ -148,13 +150,22 @@ h5 {
     color: #5C83CE !important;
 }
 
-.productLabel{
+.productLabelSmall {
     font-size: 10px;
     letter-spacing: 1px;
     padding: 2px 10px 1px;
     position: relative;
     left: 0;
-    top:0;
+    top: 0;
+}
+
+.diagonal-strike {
+    font-size: 16px !important;
+}
+
+.diagonal-strike::before {
+    content: '';
+    top: 68%;
 }
 
 @media only screen and (max-width: 767px) {

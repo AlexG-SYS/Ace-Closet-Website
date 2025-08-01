@@ -35,4 +35,31 @@ export class QuickViewProductComponent implements OnInit {
       // Additional logic here
     }
   }
+
+  viewItem(productID: string) {
+    console.log('View Product: ' + productID);
+
+    // Determine base path
+    let basePath = '';
+    if (this.product.category) {
+      basePath = `/category/${this.product.category}`;
+    } else if (this.product.tags) {
+      basePath = `/tags/${this.product.tags}`;
+    } else {
+      console.warn('No category or tags found!');
+      return;
+    }
+
+    const url = `${basePath}/product/${productID}`;
+
+    const isMobile = /Mobi|Android/i.test(window.navigator.userAgent);
+
+    if (isMobile) {
+      // Mobile navigation
+      window.open(url, '_self');
+    } else {
+      // Desktop navigation
+      window.open(url, '_self');
+    }
+  }
 }

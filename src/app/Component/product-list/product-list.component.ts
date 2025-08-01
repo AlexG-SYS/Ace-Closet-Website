@@ -58,13 +58,11 @@ export class ProductListComponent implements OnInit {
       this.categorySubject.next(this.category);
       this.tagsSubject.next(this.tags);
 
-      console.log('Search query:', this.searchQuery);
-
       // Only load products if no search query is present
       if (!this.searchQuery) {
         this.loadProductList(false);
       } else {
-        this.fetchSearchSuggestions(this.searchQuery, 12);
+        this.fetchSearchSuggestions(this.searchQuery, 15);
       }
     });
   }

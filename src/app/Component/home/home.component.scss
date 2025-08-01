@@ -122,6 +122,12 @@ a:focus {
     z-index: 5;
 }
 
+.categories__hot__deal img{
+    height: 25rem;
+    border-radius: 1rem;
+    object-fit: cover;
+}
+
 .hot__deal__sticker {
     height: 100px;
     width: 100px;
@@ -221,6 +227,7 @@ a:focus {
   background-color: #00000093;
   color: #ffffff;
 }
+
 
 /* Media Queries */
 @media only screen and (max-width: 767px) {

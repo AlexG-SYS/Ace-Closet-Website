@@ -1,4 +1,47 @@
-<div class="container text-center">
+<nav class="navbar navbar-expand-lg p-4 pb-2 px-2">
+    <div class="container-fluid pt-2 ">
+        <div class="col-auto ">
+            <button type="button" class="btn btn-outline-secondary d-flex align-items-center" routerLink="/cart">
+                <mat-icon aria-label="arrow_back" class="my-auto">arrow_back</mat-icon> &nbsp;Back to Cart
+            </button>
+        </div>
+        <div class="col-sm-8">
+            <div class="row justify-content-center">
+                <!-- Logo and Company Name -->
+                <div class="col-auto d-flex align-items-center d-block d-lg-none p-0">
+                    <button class="btn px-0" type="button" aria-label="Toggle navigation">
+                        <mat-icon aria-label="menu">menu</mat-icon>
+                    </button>
+                </div>
+                <div class="col-auto col-sm-auto d-flex align-items-center px-4">
+                    <a routerLink="/">
+                        <img src="../../../assets/logo.png" alt="logo" height="auto" width="60px">
+                    </a>
+                    <a routerLink="/" class="navbar-brand me-0">
+                        <h1 class="m-2 fs-2" style="font-family: 'Times New Roman', serif;">
+                            Ace Closet
+                        </h1>
+                    </a>
+                </div>
+                <div class="col-auto d-flex align-items-center d-block d-lg-none p-0">
+                    <div class="col-auto ">
+                        <a routerLink="/wish-list"><mat-icon class="colorBlack"
+                                aria-label="favorite">favorite</mat-icon></a>
+                    </div>
+                    <div class="col-auto px-2">
+                        <a routerLink="/cart"><mat-icon class="colorBlack" matBadge="0" matBadgeSize="small"
+                                matBadgeColor="warn" matBadgeOverlap="true" aria-hidden="false"
+                                aria-label="shopping_cart">shopping_cart</mat-icon></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-auto">
+        </div>
+    </div>
+</nav>
+
+<div class="container text-center pb-4">
     <div class="row justify-content-center m-4">
         <div class="col-auto col-lg-6 card px-3">
             <p class="fw-medium fs-5 mt-lg-3 text-center pt-3">Checkout</p>

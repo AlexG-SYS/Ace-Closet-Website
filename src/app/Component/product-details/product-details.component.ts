@@ -70,10 +70,10 @@ export class ProductDetailsComponent implements OnInit {
 
     if (isMobile) {
       // Mobile navigation
-      this.router.navigate([basePath, 'product', productID]);
+      window.open(url, '_self');
     } else {
       // Desktop navigation
-      window.open(url, '_blank');
+      window.open(url, '_self');
     }
   }
 

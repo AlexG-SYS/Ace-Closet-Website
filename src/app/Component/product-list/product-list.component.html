@@ -211,10 +211,13 @@
                         <div class="product__item__pic set-bg" [style]="{
                 'background-image': 'url(' + product.imagesURL[0] + ')'
               }">
+                            @if(product.tags == 'Sale'){
+                            <span class="productLabel">Sale</span>
+                            }
                             @if(product.quantity === 0){
                             <span class="productLabel">Out of Stock</span>
                             }
-                            <ul class="product__hover">
+                            <ul class="product__hover z-0">
                                 <li>
                                     <a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                                             width="24px" fill="#929393" class="heart" (click)="heartItem($event)">
@@ -237,7 +240,19 @@
                         </div>
                         <div class="product__item__text">
                             <h6>{{product.productName}} -- {{product.size}}</h6>
-                            <h5 class="fs-7">${{product.price | number:'1.2-2'}}</h5>
+                            @if(product.discountPercentage > 0){
+                            <span class="d-flex align-items-center">
+                                <h6 class="fs-7 text-danger">(-{{product.discountPercentage}}%)</h6>
+                                &nbsp;
+                                <h6 class="fs-7 text-danger">${{product.price - (product.price *
+                                    (product.discountPercentage
+                                    /
+                                    100)) | number:'1.2-2'}}</h6>
+                            </span>
+                            <h6 class="fs-7 diagonal-strike">${{product.price | number:'1.2-2'}}</h6>
+                            }@else {
+                            <h6 class="fs-7">${{product.price | number:'1.2-2'}}</h6>
+                            }
                             <div class="product__color__select">
                                 <div class="productColor" [style]="{ 'background-color': product.productColor }"></div>
                             </div>

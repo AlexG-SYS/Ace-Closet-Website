@@ -41,19 +41,22 @@
 <section class="categories spad px-4">
     <div class="container">
         <div class="row">
+            @if(dealWeekProduct.length > 0){
             <div class="col-sm-auto mx-auto col-lg-3 ">
                 <div class="categories__hot__deal">
-                    <img src="../../../assets/img/product-sale.png" alt="">
+                    <img [src]="dealWeekProduct[0].imagesURL[0]" alt="">
                     <div class="hot__deal__sticker">
                         <span>Sale</span>
-                        <h5>$29.99</h5>
+                        <h5>${{dealWeekProduct[0].price - (dealWeekProduct[0].price *
+                            (dealWeekProduct[0].discountPercentage /
+                            100)) | number:'1.2-2'}}</h5>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 offset-lg-1 mx-auto">
                 <div class="categories__deal__countdown">
                     <span>Deal Of The Week</span>
-                    <h2>Multi-pocket Chest Bag Black</h2>
+                    <h2>{{dealWeekProduct[0].productName}}</h2>
                     <div class="categories__deal__countdown__timer" id="countdown">
                         <div class="cd-item"><span>{{ days }}</span>
                             <p>Days</p>
@@ -69,10 +72,11 @@
                         </div>
                     </div>
                     <div class="shopBtn">
-                        <a (click)="navRoute('tags','Sale')">Shop now</a>
+                        <a (click)="viewItem(dealWeekProduct[0].id)">Shop now</a>
                     </div>
                 </div>
             </div>
+            }
         </div>
     </div>
 </section>
@@ -98,7 +102,9 @@
                     <div class="product__item__pic set-bg" [style]="{
                 'background-image': 'url(' + product.imagesURL[0] + ')'
               }">
+                        @if(product.tags == 'Sale'){
                         <span class="productLabel">Sale</span>
+                        }
                         @if(product.quantity === 0){
                         <span class="productLabel">Out of Stock</span>
                         }
@@ -121,7 +127,18 @@
                     </div>
                     <div class="product__item__text">
                         <h6>{{product.productName}} -- {{product.size}}</h6>
+                        @if(product.discountPercentage > 0){
+                        <span class="d-flex align-items-center">
+                            <h6 class="fs-7 text-danger">(-{{product.discountPercentage}}%)</h6>
+                            &nbsp;
+                            <h6 class="fs-7 text-danger">${{product.price - (product.price * (product.discountPercentage
+                                /
+                                100)) | number:'1.2-2'}}</h6>
+                        </span>
+                        <h6 class="fs-7 diagonal-strike">${{product.price | number:'1.2-2'}}</h6>
+                        }@else {
                         <h6 class="fs-7">${{product.price | number:'1.2-2'}}</h6>
+                        }
                         <div class="product__color__select">
                             <div class="productColor" [style]="{ 'background-color': product.productColor }"></div>
                         </div>

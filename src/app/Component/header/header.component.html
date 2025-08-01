@@ -48,7 +48,7 @@
                         <li class="list-group-item list-group-item-action d-flex align-items-center"
                             (click)="goToProduct(product)">
                             <img [src]="product.imagesURL[0]" alt="Product Image" class="me-2 smallImageIcon" />
-                            <span>{{ product.productName }} - {{ product.size }} &nbsp;</span>
+                            <span>{{ product.productName }} -- {{ product.size }} &nbsp;</span>
                             <div class="d-flex align-items-center">
                                 <span class="rounded-circle border"
                                     [style]="{ 'background-color': product.productColor }"
@@ -63,7 +63,18 @@
 
                 <!-- login, signup, fav, cart -->
                 <div class="col-sm-auto d-flex align-items-center d-none d-sm-none d-lg-block ">
-                    <div class="row my-2 py-2">
+                    <div class="row my-2 py-2 align-items-center">
+                        @if(globalUser){
+                        <div class="col-auto ">
+                            <span class="d-flex align-items-center ">Hi,&nbsp;
+                                <a class="linkBtn" routerLink="/profile">{{globalUser.name}}
+                                </a>&nbsp;
+                                <a class="linkBtn" routerLink="/profile"><mat-icon class="colorBlack"
+                                        aria-label="check_circle">account_circle</mat-icon>
+                                </a>
+                            </span>
+                        </div>
+                        }@else {
                         <div class="col-auto ">
                             <span class="d-flex align-items-center"><mat-icon aria-label="person">person</mat-icon> <a
                                     class="linkBtn" data-bs-toggle="modal" data-bs-target="#signInModal">Sign In</a>
@@ -71,6 +82,9 @@
                                 <a class="linkBtn" data-bs-toggle="modal"
                                     data-bs-target="#registerModal">Register</a></span>
                         </div>
+                        }
+
+
                         <div class="col-auto px-0">
                             <a routerLink="/wish-list"><mat-icon class="colorBlack"
                                     aria-label="favorite">favorite</mat-icon></a>
@@ -99,9 +113,6 @@
                             <a class="nav-link" href="/category/Jeans">Jeans</a>
                         </li>
                         <li>
-                            <a class="nav-link" href="/category/Shoes">Shoes</a>
-                        </li>
-                        <li>
                             <a class="nav-link" href="/category/Accessories">Accessories</a>
                         </li>
                         <li>
@@ -128,12 +139,24 @@
 <div class="sideNavHidden p-4 ">
     <div class="row">
         <div class="col d-flex align-items-center text-center">
-            <span class="d-flex align-items-center text-center"><mat-icon aria-label="person">person</mat-icon>
-                <a class="linkBtn" data-bs-toggle="modal" data-bs-target="#signInModal" (click)="toggleSideNav()">Sign
-                    In</a>
-                &nbsp;/&nbsp;
-                <a class="linkBtn" data-bs-toggle="modal" data-bs-target="#registerModal"
-                    (click)="toggleSideNav()">Register</a></span>
+            @if(globalUser){
+            <div class="col-auto ">
+                <span class="d-flex align-items-center fs-6 fw-medium">Hi,&nbsp;
+                    <a class="linkBtn" href="/profile">{{globalUser.name}}
+                    </a>&nbsp;
+                    <a class="linkBtn" href="/profile"><mat-icon class="colorBlack"
+                            aria-label="check_circle">account_circle</mat-icon>
+                    </a>
+                </span>
+            </div>
+            }@else {
+            <div class="col-auto ">
+                <span class="d-flex align-items-center"><mat-icon aria-label="person">person</mat-icon> <a
+                        class="linkBtn" data-bs-toggle="modal" data-bs-target="#signInModal">Sign In</a>
+                    &nbsp;/&nbsp;
+                    <a class="linkBtn" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a></span>
+            </div>
+            }
         </div>
         <div class="col-1 p-0">
             <button type="button" class="btn-close" (click)="toggleSideNav()" aria-label="Toggle navigation"></button>
@@ -146,29 +169,27 @@
                 <a class="nav-link" href="/category/all">All</a>
             </li>
             <li>
-                <a class="nav-link" href="/category/tops">Tops</a>
+                <a class="nav-link" href="/category/T-Shirts">T-Shirts</a>
             </li>
             <li>
-                <a class="nav-link" href="/category/bottoms">Bottoms</a>
+                <a class="nav-link" href="/category/Shorts">Shorts</a>
             </li>
             <li>
-                <a class="nav-link" href="/category/jeans">Jeans</a>
+                <a class="nav-link" href="/category/Jeans">Jeans</a>
             </li>
             <li>
-                <a class="nav-link" href="/category/shoes">Shoes</a>
+                <a class="nav-link" href="/category/Accessories">Accessories</a>
             </li>
             <li>
-                <a class="nav-link" href="/category/new-arrival">New Arrival</a>
+                <a class="nav-link" href="/tags/New Arrival">New Arrival</a>
             </li>
             <li>
-                <a class="nav-link" href="/category/accessories">Accessories</a>
-            </li>
-            <li>
-                <a class="nav-link" href="/category/sale">Sale</a>
+                <a class="nav-link" href="/tags/Sale">Sale</a>
             </li>
             <li>
                 <a class="nav-link" href="/faq">FAQ</a>
             </li>
+            <li>
             <li>
                 <a class="nav-link" data-bs-toggle="modal" data-bs-target="#contactUsModal"
                     (click)="toggleSideNav()">Contact Us</a>
@@ -224,6 +245,7 @@
                             <img src="../../../assets/logo.png" alt="logo" height="auto" width="70px">
                         </div>
                     </div>
+                    @if(!isLoggedIn){
                     <div class="row">
                         <div class="col d-flex justify-content-center">
                             <h1 class="fw-medium mb-2">Sign In</h1>
@@ -254,17 +276,53 @@
                     </div>
                     <div class="row">
                         <div class="col d-flex justify-content-center">
-                            <button type="button" class="btn btn-light mx-2" data-bs-dismiss="modal"
-                                aria-label="Close">Cancel</button>
-                            <button type="submit" class="btn btn-primary mx-2">Login</button>
+                            <button type="button" class="btn btn-light mx-2" data-bs-dismiss="modal" aria-label="Close"
+                                (click)="cancelLogin()">Cancel</button>
+                            <button type="submit" class="btn btn-primary mx-2">
+                                @if(isProcessing){
+                                <div class="spinner-border spinner-border-sm" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                }@else{
+                                Sign In
+                                }
+                            </button>
                         </div>
                     </div>
                     <div class="row pt-3">
                         <div class="col d-flex justify-content-center">
-                            <a class="forgotPwdLink" data-bs-target="#forgotPwdModal" data-bs-toggle="modal">Forgot
+                            <a class="forgotPwdLink d-flex align-items-center" data-bs-target="#forgotPwdModal"
+                                data-bs-toggle="modal"><mat-icon aria-label="lock_reset">lock_reset</mat-icon>
+                                &nbsp; Forgot
                                 Password?</a>
                         </div>
                     </div>
+                    <div class="row pt-3">
+                        <div class="col d-flex justify-content-center ">
+                            <a class="forgotPwdLink d-flex align-items-center" data-bs-target="#registerModal"
+                                data-bs-toggle="modal"><mat-icon aria-label="person_add">person_add</mat-icon>
+                                &nbsp; Don't Have
+                                an Account?</a>
+                        </div>
+
+                    </div>
+                    }@else {
+                    <div class="row">
+                        <div class="col d-flex justify-content-center">
+                            <h1 class="fw-medium mb-2">Hi, {{globalUser.name}}</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-center">
+                            <h1 class="fw-medium mb-2">Let's Shop!</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-center">
+                            <mat-icon aria-label="check" class="big-icon text-success">check</mat-icon>
+                        </div>
+                    </div>
+                    }
                 </div>
             </form>
         </div>
@@ -316,7 +374,9 @@
                     </div>
                     <div class="row pt-3">
                         <div class="col d-flex justify-content-center">
-                            <a class="forgotPwdLink" data-bs-target="#signInModal" data-bs-toggle="modal">Sign In?</a>
+                            <a class="forgotPwdLink d-flex align-items-center" data-bs-target="#signInModal"
+                                data-bs-toggle="modal"><mat-icon aria-label="login">login</mat-icon>
+                                &nbsp; Sign In?</a>
                         </div>
                     </div>
                 </div>
@@ -341,6 +401,39 @@
                             <img src="../../../assets/logo.png" alt="logo" height="auto" width="70px">
                         </div>
                     </div>
+                    @if(isProcessing){
+                    <div class="row">
+                        <div class="col d-flex justify-content-center">
+                            <h1 class="fw-medium mb-2">Creating Account....</h1>
+                        </div>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col d-flex justify-content-center">
+                            <div class="spinner-border" role="status" style="width: 3rem; height: 3rem;">
+                                <span class="visually-hidden primary">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    }@else if(isRegistered) {
+                    <div class="row">
+                        <div class="col d-flex justify-content-center">
+                            <h1 class="fw-medium mb-2">Account Created Successfully</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-center">
+                            <mat-icon aria-label="check" class="big-icon text-success">check</mat-icon>
+                        </div>
+                    </div>
+
+                    <div class="row pt-3">
+                        <div class="col d-flex justify-content-center">
+                            <a class="forgotPwdLink d-flex align-items-center" data-bs-target="#signInModal"
+                                data-bs-toggle="modal"><mat-icon aria-label="login">login</mat-icon>
+                                &nbsp; Please Sign In Here</a>
+                        </div>
+                    </div>
+                    } @else {
                     <div class="row">
                         <div class="col d-flex justify-content-center">
                             <h1 class="fw-medium mb-2">Create an Account</h1>
@@ -395,11 +488,20 @@
                     </div>
                     <div class="row pb-2">
                         <div class="col d-flex justify-content-center">
-                            <button type="button" class="btn btn-light mx-2" data-bs-dismiss="modal"
-                                aria-label="Close">Cancel</button>
+                            <button type="button" class="btn btn-light mx-2" data-bs-dismiss="modal" aria-label="Close"
+                                (click)="cancelRegister()">Cancel</button>
                             <button type="submit" class="btn btn-primary mx-2">Sign Up</button>
                         </div>
                     </div>
+                    <div class="row pt-3">
+                        <div class="col d-flex justify-content-center">
+                            <a class="forgotPwdLink d-flex align-items-center" data-bs-target="#signInModal"
+                                data-bs-toggle="modal"><mat-icon aria-label="login">login</mat-icon>
+                                &nbsp; Sign In?</a>
+                        </div>
+                    </div>
+
+                    }
                 </div>
             </form>
         </div>

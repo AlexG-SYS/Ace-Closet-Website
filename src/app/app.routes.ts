@@ -8,6 +8,7 @@ import { CartComponent } from './Component/cart/cart.component';
 import { FaqComponent } from './Component/faq/faq.component';
 import { ProductDetailsComponent } from './Component/product-details/product-details.component';
 import { CheckoutComponent } from './Component/checkout/checkout.component';
+import { ProfileComponent } from './Component/profile/profile.component';
 
 export const routes: Routes = [
   {
@@ -42,6 +43,11 @@ export const routes: Routes = [
         title: 'Shop | Ace Closet Bz',
         component: ProductDetailsComponent,
       },
+      {
+        path: 'profile',
+        title: 'Shop | Ace Closet Bz',
+        component: ProfileComponent,
+      },
 
       {
         path: 'wish-list',
@@ -49,14 +55,13 @@ export const routes: Routes = [
         component: WishListComponent,
       },
       { path: 'cart', title: 'Cart | Ace Closet Bz', component: CartComponent },
-      {
-        path: 'checkout',
-        title: 'Checkout | Ace Closet Bz',
-        component: CheckoutComponent,
-      },
       { path: 'faq', title: 'FAQ | Ace Closet Bz', component: FaqComponent },
-      { path: '**', title: 'Page Not Found', component: ErrorPageComponent },
     ],
+  },
+  {
+    path: 'checkout',
+    title: 'Checkout | Ace Closet Bz',
+    component: CheckoutComponent,
   },
   { path: '**', title: 'Page Not Found', component: ErrorPageComponent },
 ];
