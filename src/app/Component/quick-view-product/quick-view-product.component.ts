@@ -20,7 +20,7 @@ export class QuickViewProductComponent implements OnInit {
 
   ngOnInit() {
     const availableQty = this.product?.quantity || 0;
-    const maxQty = Math.min(availableQty, 10); // Optional: limit to max 10
+    const maxQty = Math.min(availableQty, 5); // Optional: limit to max 10
     this.quantityOptions = Array.from({ length: maxQty }, (_, i) => i + 1);
   }
 
@@ -61,5 +61,13 @@ export class QuickViewProductComponent implements OnInit {
       // Desktop navigation
       window.open(url, '_self');
     }
+  }
+
+  addToCart(productId: string, quantity: string) {
+    console.log(`Cart -- Product ID: ${productId}, Quantity: ${quantity}`);
+  }
+
+  addToWishlist(productId: string, quantity: string) {
+    console.log(`Wishlist -- Product ID: ${productId}, Quantity: ${quantity}`);
   }
 }

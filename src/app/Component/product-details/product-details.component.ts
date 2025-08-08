@@ -85,9 +85,9 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
-  heartItem(event: Event) {
+  heartItem(event: Event, product: any) {
     event.stopPropagation();
-    console.log('Hearted Item:');
+    console.log('Hearted Item:' + product.id);
   }
 
   getProductDetails(productID: string | null) {
@@ -103,7 +103,7 @@ export class ProductDetailsComponent implements OnInit {
           this.subCategory = this.product.productName;
 
           const availableQty = this.product.quantity || 0;
-          const maxQty = Math.min(availableQty, 10); // Optional: limit to max 10
+          const maxQty = Math.min(availableQty, 5); // Optional: limit to max 10
           this.quantityOptions = Array.from(
             { length: maxQty },
             (_, i) => i + 1
@@ -169,5 +169,13 @@ export class ProductDetailsComponent implements OnInit {
         console.error('Error loading products:', error);
         this.isProcessing = false;
       });
+  }
+
+  addToCart(productId: string, quantity: string) {
+    console.log(`Cart -- Product ID: ${productId}, Quantity: ${quantity}`);
+  }
+
+  addToWishlist(productId: string, quantity: string) {
+    console.log(`Wishlist -- Product ID: ${productId}, Quantity: ${quantity}`);
   }
 }

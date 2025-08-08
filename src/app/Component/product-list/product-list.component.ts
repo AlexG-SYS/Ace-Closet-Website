@@ -100,9 +100,9 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  heartItem(event: Event) {
+  heartItem(event: Event, product: any) {
     event.stopPropagation();
-    console.log('Hearted Item:');
+    console.log('Hearted Item:' + product.id);
   }
 
   loadProductList(loadMore: boolean) {

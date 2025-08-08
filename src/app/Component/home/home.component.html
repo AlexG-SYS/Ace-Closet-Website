@@ -12,19 +12,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-5 offset-lg-1">
                 <div class="banner__item banner__item--middle">
-                    <div class="banner__item__pic">
-                        <img src="../../../assets/img/shoes.jpg" alt="img">
-                    </div>
-                    <div class="banner__item__text">
-                        <h2>Shoes</h2>
-                        <a (click)="navRoute('category','Shoes')">Shop now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-7">
-                <div class="banner__item banner__item--last">
                     <div class="banner__item__pic">
                         <img src="../../../assets/img/glasses.jpg" alt="img">
                     </div>
@@ -38,7 +27,7 @@
     </div>
 </section>
 
-<section class="categories spad px-4">
+<section class="categories spad px-4 pb-4">
     <div class="container">
         <div class="row">
             @if(dealWeekProduct.length > 0){
@@ -110,7 +99,7 @@
                         }
                         <ul class="product__hover">
                             <li><a><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                                        width="24px" fill="#929393" class="heart" (click)="heartItem($event)">
+                                        width="24px" fill="#929393" class="heart" (click)="heartItem($event, product)">
                                         <path
                                             d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z" />
                                     </svg></a></li>

@@ -18,5 +18,16 @@
 <body class="mat-typography">
   <app-root></app-root>
 </body>
+<!-- Loader Wrapper -->
+<div id="loader">
+  <img src=".../../assets/logo.png" alt="Loading..." class="pulse-logo" />
+</div>
 
 </html>
+
+<script>
+  window.addEventListener('load', function () {
+    const loader = document.getElementById('loader');
+    loader.style.display = 'none';
+  });
+</script>

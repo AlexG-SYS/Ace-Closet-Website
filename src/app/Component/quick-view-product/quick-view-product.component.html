@@ -1,5 +1,5 @@
 <mat-dialog-content class="mat-typography">
-    <div class="row d-flex justify-content-end pt-2 pe-2">
+    <div class="row d-flex justify-content-end p-2">
         <button mat-dialog-close class="btn-close" aria-label="Close"></button>
     </div>
     <div class="row">
@@ -91,17 +91,19 @@
             </h5>
             <div class="row">
                 <div class="col d-flex align-items-center">
-                    <select class="quantity-select my-2">
+                    <select #qtyRef class="quantity-select my-2 me-1">
                         @for(qty of quantityOptions; track qty; let index = $index){
                         <option [value]="qty" [selected]="qty == 1">{{qty}}</option>
                         }
                     </select>
                     <!-- Add to Cart and Add to Favorite buttons -->
                     <div class="col-auto prodCart mx-2">
-                        <a>Add to Cart<mat-icon aria-label="shopping_cart">shopping_cart</mat-icon></a>
+                        <a (click)="addToCart(product.id, qtyRef.value)">Add to Cart<mat-icon
+                                aria-label="shopping_cart">shopping_cart</mat-icon></a>
                     </div>
                     <div class="col-auto prodHeart p-0">
-                        <a><mat-icon aria-label="favorite">favorite</mat-icon></a>
+                        <a (click)="addToWishlist(product.id, qtyRef.value)"><mat-icon
+                                aria-label="favorite">favorite</mat-icon></a>
                     </div>
                 </div>
 
