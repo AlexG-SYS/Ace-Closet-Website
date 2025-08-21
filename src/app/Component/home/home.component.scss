@@ -1,9 +1,17 @@
-/* General Styles */
+/* ============================= */
+/* General Styles                */
+/* ============================= */
+
 .spad {
     padding: 50px 0;
 }
 
-/* Banner Item Styles */
+
+
+/* ============================= */
+/* Banner Item Styles            */
+/* ============================= */
+
 .banner__item {
     position: relative;
     overflow: hidden;
@@ -17,7 +25,7 @@
 }
 
 .banner__item__text h2 {
-    color: #111;
+    color: var(--text-color);
     font-weight: 550;
     line-height: 46px;
     margin-bottom: 10px;
@@ -35,7 +43,7 @@
     box-shadow: 4px 0 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Banner Middle Item Styles */
+/* Banner Middle Item */
 .banner__item--middle {
     margin-top: -160px;
 }
@@ -52,7 +60,7 @@
     padding-top: 22px;
 }
 
-/* Banner Last Item Styles */
+/* Banner Last Item */
 .banner__item--last {
     margin-top: 100px;
 }
@@ -61,11 +69,14 @@
     left: 0;
 }
 
-/* Text and Button Styles */
+/* ============================= */
+/* Text and Button Styles        */
+/* ============================= */
+
 .banner__item__text a,
 .shopBtn a {
     display: inline-block;
-    color: #111;
+    color: var(--text-color);
     font-size: 13px;
     font-weight: 550;
     letter-spacing: 2px;
@@ -93,7 +104,7 @@ a:focus {
     bottom: 0;
     width: 100%;
     height: 2px;
-    background: #111;
+    background: var(--text-color);
     content: "";
     transition: all 0.3s;
 }
@@ -101,12 +112,15 @@ a:focus {
 .banner__item__text:hover a:after,
 .shopBtn:hover a:after {
     width: 40px;
-    background: #5C83CE;
+    background: var(--primary-color);
 }
 
-/* Categories Styles */
+/* ============================= */
+/* Categories Styles             */
+/* ============================= */
+
 .categories {
-    background: #f8f9fa;
+    background: var(--secondary-color);
     overflow: hidden;
     padding: 50px 0;
 }
@@ -164,7 +178,7 @@ a:focus {
 }
 
 .categories__deal__countdown h2 {
-    color: #111;
+    color: var(--text-color);
     font-weight: 550;
     line-height: 46px;
     margin-bottom: 25px;
@@ -184,7 +198,7 @@ a:focus {
 }
 
 .categories__deal__countdown__timer .cd-item span {
-    color: #111;
+    color: var(--text-color);
     font-weight: 600;
     display: block;
     font-size: 32px;
@@ -193,7 +207,7 @@ a:focus {
 .categories__deal__countdown__timer .cd-item p {
     margin-bottom: 0;
     font-size: 15px;
-    color: #3d3d3d;
+    color: var(--text-color);
     font-weight: 400;
     line-height: 25px;
     margin: 0 0 15px;
@@ -206,30 +220,34 @@ a:focus {
     content: ":";
     font-size: 24px;
     font-weight: 700;
-    color: #3d3d3d;
+    color: var(--text-color);
 }
 
-/* Product Styles */
+/* ============================= */
+/* Product Styles                */
+/* ============================= */
 
 .sale__title h3 {
-    color: #111111;
+    color: var(--text-color);
     font-size: 32px;
     font-weight: 550;
 }
 
-
 .quick-view {
-    background-color: #f5f5f5da;
-    color: #585858;
+    background-color: #dfdfdfda;
+    color: #272727;
 }
 
 .quick-view:hover {
     background-color: #00000093;
     color: #ffffff;
+    border: 1px solid #dfdfdf70;
 }
 
+/* ============================= */
+/* Media Queries                 */
+/* ============================= */
 
-/* Media Queries */
 @media only screen and (max-width: 767px) {
     .banner__item {
         margin-bottom: 40px;

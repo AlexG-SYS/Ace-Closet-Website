@@ -9,7 +9,7 @@
 }
 
 .link {
-    color: rgb(56, 56, 56);
+    color: var(--fourth-color)
 }
 
 .link:hover {
@@ -31,6 +31,19 @@
 }
 
 .rounded {
-    border-radius: 1rem!important;
+    border-radius: 1rem !important;
     background-color: #f8f9fa;
+}
+
+.productLabel {
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.img-fluid {
+    border: 1px solid var(--third-color);
+    background-color: var(--secondary-color);
+    border-radius: 25px;
+    color: var(--text-color);
 }

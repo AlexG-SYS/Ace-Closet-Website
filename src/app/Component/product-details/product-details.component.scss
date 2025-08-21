@@ -7,7 +7,6 @@
 
 .carousel-indicators [data-bs-target] {
     background-color: #d6d6d6;
-
 }
 
 .carousel-control-prev-icon {
@@ -41,11 +40,11 @@ h5 {
 }
 
 .size-btn {
-    color: #545454;
+    color: var(--text-color);
     width: 2.25rem;
     height: 2.25rem;
     border-radius: 50%;
-    border: 1px solid #54545493;
+    border: 1px solid var(--text-color);
     background-color: #ffffff00;
     font-size: 12px;
     cursor: pointer;
@@ -86,8 +85,9 @@ h5 {
 
 .size-btn:hover {
     color: #ffffff;
-    border: 1px #5C83CE;
+    border: 1px var(--primary-color);
     background-color: #5c84ce97;
+
 }
 
 .size-btn:hover.disable {
@@ -98,9 +98,10 @@ h5 {
 }
 
 .size-btn.active {
-    background-color: #000;
-    color: #fff;
-    border-color: #000;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-color: #5C83CE;
+    border: 1px solid var(--fourth-color);
 }
 
 /* Quantity Dropdown */
@@ -127,6 +128,7 @@ h5 {
 .prodCart {
     border-radius: .5rem;
     background-color: #5c84ce20;
+    border: 1px solid var(--fourth-color);
 }
 
 .prodCart a,
@@ -147,7 +149,8 @@ h5 {
 
 .prodCart:hover {
     cursor: pointer;
-    color: #5C83CE !important;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color) !important;
 }
 
 .productLabelSmall {
@@ -168,10 +171,56 @@ h5 {
     top: 68%;
 }
 
+
+/* ============================= */
+/* Breadcrumb                    */
+/* ============================= */
+
+.breadcrumb__text h4 {
+    color: var(--text-color);
+    font-weight: 550;
+    margin-bottom: 8px;
+    font-size: 24px;
+}
+
+.breadcrumb__links a,
+.breadcrumb__links span {
+    font-size: 15px;
+    display: inline-block;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.breadcrumb__links a {
+    color: var(--text-color);
+    margin-right: 18px;
+    position: relative;
+}
+
+.breadcrumb__links a:after {
+    position: absolute;
+    right: -14px;
+    top: 0;
+    content: ">";
+}
+
+.breadcrumb__links span {
+    color: var(--text-color);
+}
+
+.breadcrumb-item {
+    color: var(--fourth-color)
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    color: var(--fourth-color)
+}
+
 @media only screen and (max-width: 767px) {
 
     .productImage {
-        width: 22rem;
+        width: 20rem;
+        height: 22rem;
     }
 
     .productDetialColor {

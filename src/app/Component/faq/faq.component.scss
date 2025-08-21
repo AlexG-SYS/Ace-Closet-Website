@@ -9,3 +9,16 @@
     color: #5C83CE;
     font-weight: 550;
 }
+
+.faq {
+    color: var(--text-color);
+
+    svg {
+        fill: var(--text-color);
+    }
+}
+
+.card {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}

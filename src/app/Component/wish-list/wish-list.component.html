@@ -12,34 +12,121 @@
             <h3 class="bag active text-start" routerLink="/wish-list">Wishlist</h3>
         </div>
     </div>
-    <div class="row justify-content-center mx-1">
+    @if(wishlistProducts.length < 1 && !isProcessing && globalUser) { <div class="row justify-content-center mx-1">
         <div class="col-auto col-lg-4">
-
-            <!-- Item Row -->
             <div class="row position-relative">
-                <button class="btn-close warn position-absolute top-0 end-0" aria-label="Close"
-                    (click)="removeItem()"></button>
-
-                <div class="col-5 d-flex align-items-center p-0 ">
-                    <img src="../../../assets/img/jacket.jpg" alt="Item Image" class="img-fluid rounded mx-auto ">
-                </div>
-                <div class="col-7 text-start my-auto">
-                    <p class="m-0 fw-medium fs-7 pb-1">Black Zipper Jacket</p>
-                    <p class="m-0 fs-8">Size: M</p>
-                    <p class="m-0 fs-8">Color: Red</p>
-                    <p class="m-0 fs-8">Price: $25.00</p>
-                    <div class="input-group input-group-sm m-0 pe-4 pt-2">
-                        <button class="btn btn-outline-secondary" type="button" (click)="decreaseQuantity()">-</button>
-                        <input type="text" class="form-control text-center" value="{{quantity}}">
-                        <button class="btn btn-outline-secondary" type="button" (click)="increaseQuantity()">+</button>
-                    </div>
-                    <div class="pt-2">
-                        <a class="link fs-8" (click)="moveToCart()">Move to
-                            Cart</a>
+                <div class="col-12 d-flex align-items-center p-0">
+                    <div class="alert alert-secondary w-100" role="alert">
+                        Your Wishlist is Empty.
                     </div>
                 </div>
-                <hr class="my-3">
+            </div>
+        </div>
+</div>
+} @if(message) {
+<div class="row justify-content-center mx-1">
+    <div class="col-auto col-lg-4">
+        <div class="row position-relative">
+            <div class="col-12 d-flex align-items-center p-0">
+                <div class="alert alert-success py-2 w-100" role="alert">
+                    {{ message }}
+                </div>
             </div>
         </div>
     </div>
+</div>
+}
+
+@if(!globalUser){
+<div class="row justify-content-center mx-1">
+    <div class="col-auto col-lg-4">
+        <div class="row position-relative">
+            <div class="col-12 d-flex align-items-center p-0">
+                <div class="alert alert-danger w-100 fs-6" role="alert">
+                    Sign-In in Order to Add to Wishlist
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@if(isProcessing) {
+<div class="row justify-content-center">
+    <div class="row pt-2">
+        <div class="col d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@if(wishlistProducts.length >= 1 && !isProcessing) {
+<div class="row justify-content-center mx-1">
+    <div class="col-auto col-lg-4">
+        @for(product of wishlistProducts; track product){
+        <!-- Item Row -->
+        <div class="row position-relative">
+
+
+            @if(themeDark){
+            <button class="btn-close warn position-absolute top-0 end-0" aria-label="Close" data-bs-theme="dark"
+                (click)="removeItem(product.id)"></button>
+            }@else {
+            <button class="btn-close warn position-absolute top-0 end-0" aria-label="Close"
+                (click)="removeItem(product.id)"></button>
+            }
+
+            <div class="col-5 d-flex align-items-center p-0">
+                <img [src]="product.imagesURL[0]" alt="Item Image" class="img-fluid rounded mx-auto" />
+            </div>
+            <div class="col-7 text-start my-auto">
+                <p class="m-0 fw-medium fs-7 pb-1">{{ product.productName }}</p>
+                <p class="m-0 fs-7">Size: {{ product.size }}</p>
+                <span class="d-flex align-items-center">
+                    <p class="m-0 fs-7">Color:</p>
+                    &nbsp;&nbsp;
+                    <div class="productColor" [style]="{ 'background-color': product.productColor }"></div>
+                </span>
+
+                @if(product.discountPercentage > 0){
+                <span class="d-flex align-items-center">
+                    <p class="m-0 fs-7">Price:</p>
+                    &nbsp; &nbsp;
+                    <h6 class="m-0 fs-7 text-danger">
+                        ${{
+                        product.price -
+                        product.price * (product.discountPercentage / 100)
+                        | number : "1.2-2"
+                        }}
+                    </h6>
+                </span>
+
+                <h6 class="fs-7 m-0 diagonal-strike">
+                    ${{ product.price | number : "1.2-2" }}
+                </h6>
+
+                }@else {
+                <span class="d-flex align-items-center">
+                    <p class="m-0 fs-7">Price:</p>
+                    &nbsp;&nbsp;
+                    <h6 class="fs-7 m-0">${{ product.price | number : "1.2-2" }}</h6>
+                </span>
+                } @if(product.quantity
+                <= 0){ <br />
+                <span class="productLabel mt-1">Out of Stock</span>
+                } @else {
+                <div class="pt-2">
+                    <a class="link fs-8" (click)="moveToCart(product.id)">Move to Cart</a>
+                </div>
+                }
+            </div>
+            <hr class="my-3" />
+        </div>
+        }
+    </div>
+</div>
+}
 </div>

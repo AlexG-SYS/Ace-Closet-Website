@@ -8,6 +8,8 @@ import { QuickViewProductComponent } from '../quick-view-product/quick-view-prod
 import { ProductsService } from '../../Service/products.service';
 import { DecimalPipe } from '@angular/common';
 import { DocumentData, QueryDocumentSnapshot } from '@angular/fire/firestore';
+import { UsersService } from '../../Service/users.service';
+import { GlobalService } from '../../Service/global.service';
 
 @Component({
   selector: 'app-product-details',
@@ -29,12 +31,16 @@ export class ProductDetailsComponent implements OnInit {
   selectedQuantity: number = 0;
   products: any[] = [];
   lastDoc: QueryDocumentSnapshot<DocumentData> | null = null;
+  addingError = '';
+  addingSuccess = '';
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private dialog: MatDialog,
-    private productService: ProductsService
+    private productService: ProductsService,
+    private userService: UsersService,
+    private globalService: GlobalService
   ) {}
 
   ngOnInit() {
@@ -83,11 +89,6 @@ export class ProductDetailsComponent implements OnInit {
       maxWidth: '900px',
       data: product,
     });
-  }
-
-  heartItem(event: Event, product: any) {
-    event.stopPropagation();
-    console.log('Hearted Item:' + product.id);
   }
 
   getProductDetails(productID: string | null) {
@@ -171,11 +172,102 @@ export class ProductDetailsComponent implements OnInit {
       });
   }
 
-  addToCart(productId: string, quantity: string) {
-    console.log(`Cart -- Product ID: ${productId}, Quantity: ${quantity}`);
+  addingToCart: boolean = false;
+  async addToCart(productId: string, quantity: string) {
+    let user = this.globalService.getUser();
+    this.addingToCart = true;
+
+    if (!this.selectedSize) {
+      this.addingToCart = false;
+      this.addingError = 'Select a Size Before Adding to Cart';
+      setTimeout(() => {
+        this.addingError = '';
+      }, 5000);
+      return;
+    }
+
+    if (!quantity || quantity == '0') {
+      this.addingToCart = false;
+      this.addingError = 'Out of Stock';
+      setTimeout(() => {
+        this.addingError = '';
+      }, 5000);
+      return;
+    }
+
+    if (!user) {
+      this.addingToCart = false;
+      this.addingError = 'Sign-in to Add Items to your Cart';
+      setTimeout(() => {
+        this.addingError = '';
+      }, 5000);
+      return;
+    }
+
+    const success = await this.userService.updateUserCartWishlist(
+      user.uid,
+      'cart',
+      { productId: productId, quantity: Number(quantity) },
+      'add'
+    );
+
+    if (success) {
+      this.addingSuccess = 'Product Added to Cart';
+      setTimeout(() => {
+        this.addingSuccess = '';
+      }, 5000);
+      this.addingError = '';
+      this.addingToCart = false;
+    } else {
+      this.addingError = 'Error adding Product to Cart';
+      setTimeout(() => {
+        this.addingError = '';
+      }, 5000);
+      this.addingToCart = false;
+    }
   }
 
-  addToWishlist(productId: string, quantity: string) {
-    console.log(`Wishlist -- Product ID: ${productId}, Quantity: ${quantity}`);
+  addingToWishlist: boolean = false;
+  async addToWishlist(productId: string, quantity: string) {
+    let user = this.globalService.getUser();
+    this.addingToWishlist = true;
+
+    if (!user) {
+      this.addingToWishlist = false;
+      this.addingError = 'Sign-in to Add Items to your Wishlist';
+      return;
+    }
+
+    if (!quantity || quantity === '0') {
+      this.addingToWishlist = false;
+      this.addingError = 'Out of Stock';
+      setTimeout(() => {
+        this.addingError = '';
+      }, 5000);
+      return;
+    }
+
+    const success = await this.userService.updateUserCartWishlist(
+      user.uid,
+      'wishlist',
+      { productId: productId },
+      'add'
+    );
+
+    if (success) {
+      this.addingSuccess = 'Product Added to Wishlist';
+      setTimeout(() => {
+        this.addingSuccess = '';
+      }, 5000);
+      this.addingError = '';
+      this.addingToWishlist = false;
+    } else {
+      this.addingError = 'Error adding Product to Wishlist';
+      setTimeout(() => {
+        this.addingError = '';
+      }, 5000);
+
+      this.addingToWishlist = false;
+    }
   }
 }

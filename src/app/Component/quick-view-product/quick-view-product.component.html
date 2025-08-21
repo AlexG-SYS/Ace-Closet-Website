@@ -97,17 +97,37 @@
                         }
                     </select>
                     <!-- Add to Cart and Add to Favorite buttons -->
-                    <div class="col-auto prodCart mx-2">
-                        <a (click)="addToCart(product.id, qtyRef.value)">Add to Cart<mat-icon
-                                aria-label="shopping_cart">shopping_cart</mat-icon></a>
+                    <div class="col-auto prodCart mx-2 d-flex align-items-center">
+                        @if(addingToCart){
+                        <span class="spinner-border spinner-border-sm mx-2" aria-hidden="true"></span>
+                        <mat-icon aria-label="shopping_cart">shopping_cart</mat-icon>
+                        } @else{
+                        <a (click)="addToCart(product.id, qtyRef.value)">
+                            Add to Cart
+                            <mat-icon aria-label="shopping_cart">shopping_cart</mat-icon></a>
+                        }
                     </div>
-                    <div class="col-auto prodHeart p-0">
+                    <div class="col-auto prodHeart p-0 d-flex align-items-center">
+                        @if(addingToWishlist){
+                        <span class="spinner-border spinner-border-sm mx-2" aria-hidden="true"></span>
+                        <mat-icon aria-label="favorite">favorite</mat-icon>
+                        } @else{
                         <a (click)="addToWishlist(product.id, qtyRef.value)"><mat-icon
                                 aria-label="favorite">favorite</mat-icon></a>
+                        }
                     </div>
                 </div>
-
             </div>
+            @if(addingError){
+            <div class="alert alert-danger mt-2 py-2 text-center" role="alert">
+                {{addingError}}
+            </div>
+            }
+            @if(addingSuccess){
+            <div class="alert alert-success mt-2 py-2 text-center" role="alert">
+                {{addingSuccess}}
+            </div>
+            }
             <h5 class="fw-medium mt-3 fs-7">
                 Description:
                 <p class="fw-normal pt-2">{{product.description}}</p>

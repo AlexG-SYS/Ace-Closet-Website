@@ -1,13 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+/* ============================= */
+/* Light & Dark Mode Variables   */
+/* ============================= */
+
+/* Light Mode (default) */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --primary-color: #5C83CE;
+  --secondary-color: #f8f9fa;
+  --third-color: #ececec;
+  --fourth-color: #5a5a5a;
+  --hover-color: rgba(0, 0, 0, 0.05);
+  --icon-color: #5C83CE;
+  --card-shadow: 3px 0 6px rgba(0, 0, 0, 0.08);
+  --background-color: #ffffff;
+  --image-color: filter: invert(1) brightness(2);
+}
+
+/* Dark Mode Overrides */
+.dark-mode {
+  --bg-color: #121212;
+  --text-color: #f1f1f1;
+  --primary-color: #5C83CE;
+  /* accent stays same */
+  --secondary-color: #131313;
+  --third-color: #2a2a2a;
+  --fourth-color: #b1b1b1;
+  --hover-color: rgba(255, 255, 255, 0.08);
+  --icon-color: #90caf9;
+  --card-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  --background-color: #242424;
+  --image-color: invert(1) brightness(2);
+
+}
+
+/* ============================= */
+/* Global Styles                 */
+/* ============================= */
 
 html,
 body {
   height: 100%;
-}
-
-body {
-  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
 }
 
 /* Loader full-screen wrapper */
@@ -22,6 +59,11 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 9999;
+}
+
+.bgColor {
+  background-color: var(--background-color);
+
 }
 
 /* Pulse animation */
@@ -42,34 +84,34 @@ body {
   }
 }
 
+.logo-white {
+  filter: var(--image-color);
+  height: auto;
+}
+
 .pulse-logo {
   width: 120px;
-  /* Adjust size as needed */
   animation: pulse 1.5s infinite;
 }
 
+/* ============================= */
+/* Product Card                  */
+/* ============================= */
 
 .product__item {
-  box-shadow: 3px 0 3px rgba(0, 0, 0, 0.05);
-  border: 1px solid #f2f3f4;
-  background-color: #f8f9fa;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--third-color);
+  background-color: var(--secondary-color);
   border-radius: 25px;
   overflow: hidden;
   margin-bottom: 25px;
   padding: 1rem 0.5rem;
 }
 
-.product__item:hover {
 
-  .product__hover li .heart {
-    fill: black;
-    animation: shake 0.5s;
-  }
-
-  .product__hover li .cart {
-    fill: black;
-    animation: shake 0.5s;
-  }
+.product__item:hover .product__hover li .cart {
+  fill: var(--text-color);
+  animation: shake 0.5s;
 }
 
 @keyframes shake {
@@ -130,11 +172,16 @@ body {
   text-align: center;
   display: none;
   background-color: #dfdfdfda;
-  color: #585858;
+  color: #272727;
   padding: 5px 10px;
   border-radius: .5rem;
   text-decoration: none;
+}
 
+.quick-view:hover {
+  background-color: #00000093;
+  color: #ffffff;
+  border: 1px solid #dfdfdf70;
 }
 
 .product__hover__QuickView {
@@ -146,10 +193,6 @@ body {
   margin: 0;
 }
 
-.quick-view:hover {
-  background-color: #00000093;
-  color: #ffffff;
-}
 
 
 .product__item__pic {
@@ -165,7 +208,7 @@ body {
 
 .product__item__text h6,
 .product__item__text h5 {
-  color: #111;
+  color: var(--text-color);
   font-size: 16px;
   font-weight: 550;
   margin-bottom: 5px;
@@ -197,13 +240,13 @@ body {
 }
 
 .btn-primary {
-  background-color: #5C83CE;
-  border: solid 1px #5C83CE;
+  background-color: var(--primary-color);
+  border: solid 1px var(--primary-color);
 }
 
 .btn-primary:hover {
   background-color: #4a6eb1;
-  border: solid 1px #5C83CE;
+  border: solid 1px var(--primary-color);
 }
 
 .error {
@@ -214,6 +257,34 @@ body {
   font-size: 11px !important;
   line-height: 1;
 }
+
+/* ============================= */
+/* Dropdown Styles               */
+/* ============================= */
+
+.dropdown-item {
+  padding: 8px 16px;
+  color: var(--text-color);
+}
+
+.dropdown-item:hover {
+  color: var(--text-color);
+  background: var(--hover-color);
+}
+
+.dropdown-item:active {
+  color: var(--primary-color);
+}
+
+.dropdown-menu {
+  border: 1px solid var(--third-color);
+  background-color: var(--secondary-color);
+  border-radius: 1rem;
+}
+
+/* ============================= */
+/* Labels & Utils                */
+/* ============================= */
 
 .productLabel {
   color: #fff;
@@ -250,22 +321,26 @@ body {
   width: 100%;
   height: 1px;
   background: #e53637;
-  /* or any color you prefer */
   transform: rotate(-13deg);
   transform-origin: left center;
   pointer-events: none;
 }
 
 .linkBtn {
-  color: black;
+  color: var(--text-color);
   text-decoration: none;
 }
 
 .linkBtn:hover {
   cursor: pointer;
   text-decoration: underline;
-  color: #5C83CE;
+  color: var(--primary-color);
 }
+
+
+/* ============================= */
+/* Responsive                    */
+/* ============================= */
 
 @media only screen and (max-width: 767px) {
   .product__item {
@@ -283,5 +358,9 @@ body {
   .quick-view,
   .product__hover__QuickView {
     display: none;
+  }
+
+  .productLabel {
+    margin-top: 8px
   }
 }

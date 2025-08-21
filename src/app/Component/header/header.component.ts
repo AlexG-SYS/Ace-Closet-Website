@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import {
   RouterOutlet,
   RouterLink,
@@ -19,6 +19,7 @@ import { ProductsService } from '../../Service/products.service';
 import { UsersService } from '../../Service/users.service';
 import { Timestamp } from '@angular/fire/firestore';
 import { GlobalService } from '../../Service/global.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -34,8 +35,10 @@ import { GlobalService } from '../../Service/global.service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent implements OnInit {
-  globalUser: any;
+export class HeaderComponent implements OnInit, OnDestroy {
+  cartCount = 0;
+  private userSub!: Subscription;
+  globalUser: any = null; // Initialize as null
   searchText = new FormControl('');
 
   searchSuggestions: any[] = [];
@@ -76,29 +79,50 @@ export class HeaderComponent implements OnInit {
   });
 
   sideNavHidden = false; // Initially hidden
+  themeDark = false;
 
   constructor(
     private router: Router,
     private productService: ProductsService,
     private userServices: UsersService,
-    private globalService: GlobalService
-  ) {}
+    private globalService: GlobalService,
+    private renderer: Renderer2
+  ) {
+    const savedTheme = localStorage.getItem('theme') || 'light-mode';
+    this.toggleTheme(savedTheme);
+  }
 
   async ngOnInit() {
     await this.userServices.initializeUser();
-    this.checkForUser(); // ✅ runs only after user is initialized
+
+    this.userSub = this.globalService.currentUser$.subscribe((user) => {
+      this.globalUser = user; // Keep local copy updated
+      if (user && Array.isArray(user.cart)) {
+        this.cartCount = user.cart.length;
+      } else {
+        this.cartCount = 0;
+      }
+    });
   }
 
-  checkForUser() {
-    let user = this.globalService.getUser();
-
-    if (user) {
-      this.globalUser = user;
-      console.log('User found in Global Service:', this.globalUser.name);
-    } else {
-      this.globalUser = null;
-      console.log('No user found in Global Service.');
+  ngOnDestroy() {
+    if (this.userSub) {
+      this.userSub.unsubscribe();
     }
+  }
+
+  toggleTheme(theme: string) {
+    // Remove any existing theme classes
+    document.body.classList.remove('light-mode', 'dark-mode');
+
+    // Apply the new theme
+    this.renderer.addClass(document.body, theme);
+
+    // Update the themeDark boolean
+    this.themeDark = theme === 'dark-mode';
+
+    // Save the preference
+    localStorage.setItem('theme', theme);
   }
 
   toggleSideNav() {
@@ -118,13 +142,15 @@ export class HeaderComponent implements OnInit {
         .signInUser(email, password)
         .then((cred) => {
           this.globalService.setUser(cred);
-          this.checkForUser();
 
           this.signInFormError = '';
           this.isProcessing = false;
           this.isLoggedIn = true;
 
           this.cancelLogin();
+
+          // Redirect back to current page
+          window.location.reload();
         })
         .catch((err) => {
           this.signInFormError = 'Invalid Credentials. Please try again.';
@@ -191,6 +217,7 @@ export class HeaderComponent implements OnInit {
           console.log('Registration successful! Login in to continue.');
           this.isProcessing = false;
           this.isRegistered = true;
+          window.location.reload();
         })
         .catch((error) => {
           this.isProcessing = false;
@@ -342,5 +369,10 @@ export class HeaderComponent implements OnInit {
       text,
       limit
     );
+  }
+
+  logout() {
+    this.userServices.logout();
+    window.location.reload();
   }
 }

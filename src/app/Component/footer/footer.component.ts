@@ -8,6 +8,8 @@ import { RouterOutlet, RouterLink, Router } from '@angular/router';
   styleUrl: './footer.component.scss',
 })
 export class FooterComponent {
+  currentYear = new Date().getFullYear();
+
   constructor(private router: Router) {}
 
   navRoute(route: string) {

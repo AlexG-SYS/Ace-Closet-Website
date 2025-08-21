@@ -8,13 +8,18 @@
     cursor: pointer;
 }
 
-.link {
-    color: rgb(56, 56, 56);
+.link,
+.btn-outline-secondary {
+    color: var(--fourth-color)
 }
 
 .link:hover {
     color: #5C83CE;
     cursor: pointer;
+}
+
+.btn-outline-secondary:hover {
+    color: var(--third-color)
 }
 
 .btn-outline-secondary {
@@ -31,7 +36,25 @@
 }
 
 .rounded {
-    border-radius: 1rem!important;
+    border-radius: 1rem !important;
     background-color: #f8f9fa;
-    
+
+}
+
+.productLabel {
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.paddingTop {
+    padding-top: 2px;
+}
+
+.img-fluid,
+.card {
+    border: 1px solid var(--third-color);
+    background-color: var(--secondary-color);
+    border-radius: 25px;
+    color: var(--text-color);
 }

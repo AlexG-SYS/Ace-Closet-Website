@@ -12,107 +12,224 @@
             <h3 class="bag text-start" routerLink="/wish-list">Wishlist</h3>
         </div>
     </div>
-    <div class="row justify-content-center mx-1">
+    @if(cartProducts.length < 1 && !isProcessing && globalUser) { <div class="row justify-content-center mx-1">
         <div class="col-auto col-lg-4">
-            <!-- Item Row -->
             <div class="row position-relative">
-                <button class="btn-close warn position-absolute top-0 end-0" aria-label="Close"
-                    (click)="removeItem()"></button>
-
-                <div class="col-5 col-md-4 d-flex align-items-center p-0">
-                    <img src="../../../assets/img/jacket.jpg" alt="Item Image" class="img-fluid rounded mx-auto">
-                </div>
-                <div class="col-7 text-start my-auto">
-                    <p class="m-0 fw-medium fs-7 pb-1">Black Zipper Jacket</p>
-                    <p class="m-0 fs-8">Size: M</p>
-                    <p class="m-0 fs-8">Color: Red</p>
-                    <p class="m-0 fs-8">Price: $25.00</p>
-                    <div class="input-group input-group-sm m-0 pe-4 pt-2">
-                        <button class="btn btn-outline-secondary" type="button" (click)="decreaseQuantity()">-</button>
-                        <input type="text" class="form-control text-center" value="{{quantity}}">
-                        <button class="btn btn-outline-secondary" type="button" (click)="increaseQuantity()">+</button>
-                    </div>
-                    <div class="pt-2">
-                        <a class="me-3 link fs-8" (click)="editItem()">Edit</a>
-                        <a class="link fs-8" (click)="moveToWishlist()">Move to
-                            Wishlist</a>
+                <div class="col-12 d-flex align-items-center p-0">
+                    <div class="alert alert-secondary w-100" role="alert">
+                        Your Cart is Empty.
                     </div>
                 </div>
-                <hr class="my-3">
-            </div>
-
-            <!-- Item Row -->
-            <div class="row position-relative">
-                <button class="btn-close warn position-absolute top-0 end-0" aria-label="Close"
-                    (click)="removeItem()"></button>
-
-                <div class="col-5 col-md-4 d-flex align-items-center p-0">
-                    <img src="../../../assets/img/jacket.jpg" alt="Item Image" class="img-fluid rounded mx-auto">
-                </div>
-                <div class="col-7 text-start my-auto">
-                    <p class="m-0 fw-medium fs-7 pb-1">Black Zipper Jacket</p>
-                    <p class="m-0 fs-8">Size: M</p>
-                    <p class="m-0 fs-8">Color: Red</p>
-                    <p class="m-0 fs-8">Price: $25.00</p>
-                    <div class="input-group input-group-sm m-0 pe-4 pt-2">
-                        <button class="btn btn-outline-secondary" type="button" (click)="decreaseQuantity()">-</button>
-                        <input type="text" class="form-control text-center" value="{{quantity}}">
-                        <button class="btn btn-outline-secondary" type="button" (click)="increaseQuantity()">+</button>
-                    </div>
-                    <div class="pt-2">
-                        <a class="me-3 link fs-8" (click)="editItem()">Edit</a>
-                        <a class="link fs-8" (click)="moveToWishlist()">Move to
-                            Wishlist</a>
-                    </div>
-                </div>
-                <hr class="my-3">
-            </div>
-
-            <!-- Item Row -->
-            <div class="row position-relative">
-                <button class="btn-close warn position-absolute top-0 end-0" aria-label="Close"
-                    (click)="removeItem()"></button>
-
-                <div class="col-5 col-md-4 d-flex align-items-center p-0">
-                    <img src="../../../assets/img/jacket.jpg" alt="Item Image" class="img-fluid rounded mx-auto">
-                </div>
-                <div class="col-7 text-start my-auto">
-                    <p class="m-0 fw-medium fs-7 pb-1">Black Zipper Jacket</p>
-                    <p class="m-0 fs-8">Size: M</p>
-                    <p class="m-0 fs-8">Color: Red</p>
-                    <p class="m-0 fs-8">Price: $25.00</p>
-                    <div class="input-group input-group-sm m-0 pe-4 pt-2">
-                        <button class="btn btn-outline-secondary" type="button" (click)="decreaseQuantity()">-</button>
-                        <input type="text" class="form-control text-center" value="{{quantity}}">
-                        <button class="btn btn-outline-secondary" type="button" (click)="increaseQuantity()">+</button>
-                    </div>
-                    <div class="pt-2">
-                        <a class="me-3 link fs-8" (click)="editItem()">Edit</a>
-                        <a class="link fs-8" (click)="moveToWishlist()">Move to
-                            Wishlist</a>
-                    </div>
-                </div>
-                <hr class="my-3">
             </div>
         </div>
-        <!-- Summary Section -->
-        <div class="col col-lg-3 justify-content-center ms-lg-4 mb-4">
-            <div class="card p-3">
-                <div class="row">
-                    <div class="col">
-                        <p class="mb-0 card-title text-start fw-medium fs-5">Subtotal:</p>
-                    </div>
-                    <div class="col">
-                        <p class="mb-0 card-title text-end fw-medium fs-5">$75.00</p>
-                    </div>
+</div>
+}
+
+@if(message) {
+<div class="row justify-content-center mx-1">
+    <div class="col-auto col-lg-4">
+        <div class="row position-relative">
+            <div class="col-12 d-flex align-items-center p-0">
+                <div class="alert alert-success py-2 w-100" role="alert">
+                    {{ message }}
                 </div>
-                <div class="input-group my-3">
-                    <input type="text" class="form-control" placeholder="Coupon Code">
-                    <button class="btn btn-secondary" type="button">Apply</button>
-                </div>
-                <a href="/checkout" class="btn btn-primary w-100" type="button">Checkout</a>
             </div>
         </div>
+    </div>
+</div>
+}
+
+@if(errorMessage){
+<div class="row justify-content-center mx-1">
+    <div class="col-auto col-lg-4">
+        <div class="row position-relative">
+            <div class="col-12 d-flex align-items-center p-0">
+                <div class="alert alert-danger py-2 w-100" role="alert">
+                    {{ errorMessage }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@if(!globalUser){
+<div class="row justify-content-center mx-1">
+    <div class="col-auto col-lg-4">
+        <div class="row position-relative">
+            <div class="col-12 d-flex align-items-center p-0">
+                <div class="alert alert-danger w-100 fs-6" role="alert">
+                    Sign-In in Order to Add to Cart
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@if(isProcessing) {
+<div class="row justify-content-center">
+    <div class="row pt-2">
+        <div class="col d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@if(cartProducts.length >= 1 && !isProcessing) { <div class="row justify-content-center mx-1">
+    <div class="col-auto col-lg-4">
+        @for(product of cartProducts; track product){
+        <!-- Item Row -->
+        <div class="row position-relative">
+            @if(themeDark){
+            <button class="btn-close warn position-absolute top-0 end-0" aria-label="Close" data-bs-theme="dark"
+                (click)="removeItem(product.id)"></button>
+            }@else {
+            <button class="btn-close warn position-absolute top-0 end-0" aria-label="Close"
+                (click)="removeItem(product.id)"></button>
+            }
+
+            <div class="col-5 d-flex align-items-center p-0">
+                <img [src]="product.imagesURL[0]" alt="Item Image" class="img-fluid rounded mx-auto" />
+            </div>
+            <div class="col-7 text-start my-auto">
+                <p class="m-0 fw-medium fs-7 pb-1">{{ product.productName }}</p>
+                <p class="m-0 fs-7">Size: {{ product.size }}</p>
+                <span class="d-flex align-items-center">
+                    <p class="m-0 fs-7">Color:</p>
+                    &nbsp;&nbsp;
+                    <div class="productColor" [style]="{ 'background-color': product.productColor }"></div>
+                </span>
+
+                @if(product.discountPercentage > 0){
+                <span class="d-flex align-items-center">
+                    <p class="m-0 fs-7">Price:</p>
+                    &nbsp; &nbsp;
+                    <h6 class="m-0 fs-7 text-danger">
+                        ${{
+                        product.price -
+                        product.price * (product.discountPercentage / 100)
+                        | number : "1.2-2"
+                        }}
+                    </h6>
+                </span>
+
+                <h6 class="fs-7 m-0 diagonal-strike">
+                    ${{ product.price | number : "1.2-2" }}
+                </h6>
+
+                }@else {
+                <span class="d-flex align-items-center">
+                    <p class="m-0 fs-7">Price:</p>
+                    &nbsp;&nbsp;
+                    <h6 class="fs-7 m-0">${{ product.price | number : "1.2-2" }}</h6>
+                </span>
+                }
+
+                @if(product.quantity
+                <= 0){ <br />
+                <span class="productLabel mt-1">Out of Stock</span>
+                } @else {
+                <div class="input-group input-group-sm m-0 pe-4 pt-2">
+                    @if(product.cartQuantity
+                    == 1){
+                    <button class="btn btn-outline-secondary d-flex align-items-end " type="button"
+                        (click)="decreaseQuantity(product.id)">
+                        <mat-icon class="fs-4 m-0 p-0" aria-label="delete">delete_forever</mat-icon>
+                    </button>
+                    }@else {
+                    <button class="btn btn-outline-secondary d-flex align-items-center " type="button"
+                        (click)="decreaseQuantity(product.id)">
+                        <mat-icon class="fs-5 paddingTop" aria-label="remove">remove</mat-icon>
+                    </button>
+                    }
+
+                    <input type="text" class="form-control text-center " value="{{ product.cartQuantity }}" />
+                    @if(product.cartQuantity
+                    != product.quantity){
+                    <button class="btn btn-outline-secondary d-flex align-items-center " type="button"
+                        (click)="increaseQuantity(product.id)">
+                        <mat-icon class="fs-5 paddingTop" aria-label="add">add</mat-icon>
+                    </button>
+                    }
+                </div>
+                <div class="pt-2">
+                    <a class="me-3 link fs-8" (click)="editItem()">Edit</a>
+                    <a class="link fs-8" (click)="moveToWishlist(product.id)">Move to Wishlist</a>
+                </div>
+                }
+
+
+            </div>
+            <hr class="my-3" />
+        </div>
+        }
+
 
     </div>
+    <!-- Summary Section -->
+    <div class="col col-lg-3 justify-content-center ms-lg-4 mb-4 mt-4 mt-md-0">
+        <div class="card p-3">
+            <div class="row">
+                <div class="col">
+                    <p class="mb-0 card-title text-start fw-normal fs-7">Subtotal:</p>
+                </div>
+                <div class="col">
+                    <p class="mb-0 card-title text-end fw-normal fs-7">
+                        ${{ subtotal | number : '1.2-2' }}
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p class="mb-0 card-title text-start fw-normal fs-7 text-danger">Discount:</p>
+                </div>
+                <div class="col">
+                    <p class="mb-0 card-title text-end fw-normal fs-7 text-danger">
+                        - ${{ discount | number : '1.2-2' }}
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p class="mb-0 card-title text-start fw-normal fs-7">Total:</p>
+                </div>
+                <div class="col">
+                    <p class="mb-0 card-title text-end fw-normal fs-7">
+                        ${{ subtotal - discount | number : '1.2-2' }}
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p class="mb-1 card-title text-start fw-normal fs-7">GST:</p>
+                </div>
+                <div class="col">
+                    <p class="mb-1 card-title text-end fw-normal fs-7">
+                        ${{ tax | number : '1.2-2' }}
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p class="mb-0 card-title text-start fw-medium fs-5">Grand Total:</p>
+                </div>
+                <div class="col">
+                    <p class="mb-0 card-title text-end fw-medium fs-5">
+                        ${{ grandTotal | number : '1.2-2' }}
+                    </p>
+                </div>
+            </div>
+            <div class="input-group my-3">
+                <input type="text" class="form-control" placeholder="Coupon Code" />
+                <button class="btn btn-secondary" type="button">Apply</button>
+            </div>
+            <a href="/checkout" class="btn btn-primary w-100 my-2" type="button">Checkout</a>
+        </div>
+    </div>
+</div>
+}
 </div>

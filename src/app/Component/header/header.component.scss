@@ -1,32 +1,117 @@
+/* ============================= */
+/* Header & Navbar                */
+/* ============================= */
+
 .navbar {
-  background-color: #f8f9fa;
+  background-color: var(--secondary-color);
 }
 
+/* Generic icon/text colors */
 .colorBlack {
-  color: rgb(0, 0, 0);
+  color: var(--text-color);
 }
+
+
 
 .colorBlack:hover {
-  color: #5C83CE;
+  color: var(--primary-color);
 }
 
+/* Logout Button in Dropdown */
+.logout {
+  border-radius: 1rem;
+  margin: 8px 16px;
+  background-color: #e53637;
+  /* force logout red */
+  border-color: transparent;
 
+  .dropdown-item {
+    color: #fff;
+    background-color: inherit;
+    border-radius: 1rem;
+  }
 
+  .dropdown-item:hover {
+    background-color: #c82333;
+  }
+}
 
+/* Buttons */
 .btn-outline-secondary {
-  border-color: #dee2e6;
+  border-color: var(--third-color);
+  color: var(--text-color);
 }
 
 .btn-outline-secondary:hover {
-  background-color: #5C83CE;
+  background-color: var(--primary-color);
+  color: #fff;
 }
 
+/* Links */
 a:hover {
   cursor: pointer;
 }
 
+.nav-link {
+  color: var(--text-color);
+  font-size: 15px;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  display: block;
+  bottom: 0;
+  left: 0;
+  height: 0.2em;
+  background-color: var(--primary-color);
+  transform: scaleX(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1.1);
+}
+
+/* ============================= */
+/* SideNav                        */
+/* ============================= */
+
+.sideNavHidden {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 15rem;
+  height: 100%;
+  background-color: var(--secondary-color);
+  z-index: 9999;
+
+  .navbar {
+    background-color: transparent;
+  }
+}
+
+.close:hover {
+  color: #e53637;
+}
+
+/* ============================= */
+/* Dropdowns & Active States      */
+/* ============================= */
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: var(--primary-color) !important;
+  color: #fff !important;
+}
+
+/* ============================= */
+/* Utilities & Misc               */
+/* ============================= */
+
 .matbadge {
-  color: black;
+  color: var(--text-color);
 }
 
 .smallImageIcon {
@@ -57,58 +142,13 @@ a:hover {
   width: 91% !important;
 }
 
-.nav-link {
-  color: black;
-  font-size: 15px;
-  font-weight: 500;
-
-  &::after {
-    content: '';
-    display: block;
-    bottom: 0;
-    left: 0;
-    height: 0.2em;
-    background-color: #5C83CE;
-    transform: scaleX(0);
-    transition-property: transform;
-    transition-duration: 0.2s;
-  }
-
-  &:hover {
-    &::after {
-      transform: scaleX(1.1);
-    }
-
-  }
-}
-
-
-.sideNavHidden {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 15rem;
-  height: 100%;
-  background-color: #f8f9faf8;
-  z-index: 9999;
-
-  .navbar {
-    background-color: #f8f9fa00;
-
-  }
-}
-
-.close:hover {
-  color: red;
-}
-
 .forgotPwdLink {
   text-decoration: none;
-  color: rgb(107, 107, 107);
+  color: gray;
 }
 
 .forgotPwdLink:hover {
-  color: #557bc2;
+  color: var(--primary-color);
 }
 
 .mat-icon.big-icon {
@@ -116,6 +156,16 @@ a:hover {
   width: auto;
   height: auto;
 }
+
+.modal-content {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border: 1px solid var(--third-color);
+}
+
+/* ============================= */
+/* Responsive                     */
+/* ============================= */
 
 @media only screen and (max-width: 767px) {
   .w-auto {

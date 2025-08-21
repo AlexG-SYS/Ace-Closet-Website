@@ -19,21 +19,9 @@ export class ProfileComponent {
   ) {}
 
   async ngOnInit() {
-    await this.userServices.initializeUser();
-
-    this.checkForUser(); // ✅ runs only after user is initialized
-  }
-
-  checkForUser() {
-    let user = this.globalService.getUser();
-
-    if (user) {
+    this.globalService.currentUser$.subscribe(async (user) => {
       this.globalUser = user;
-      console.log('User found in Global Service:', this.globalUser.name);
-    } else {
-      this.globalUser = null;
-      console.log('No user found in Global Service.');
-    }
+    });
   }
 
   convertRawTimestamp(raw: { seconds: number; nanoseconds?: number }): string {
