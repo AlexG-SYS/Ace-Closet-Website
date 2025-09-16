@@ -337,6 +337,11 @@ body {
   color: var(--primary-color);
 }
 
+.mat-mdc-dialog-surface,
+.modal-content {
+  border-radius: 25px !important;
+}
+
 
 /* ============================= */
 /* Responsive                    */

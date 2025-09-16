@@ -23,11 +23,30 @@
   <img src=".../../assets/logo.png" alt="Loading..." class="pulse-logo" />
 </div>
 
+<div class="modal fade" id="comingSoon" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-4">
+      <div class="modal-body text-center p-0">
+        <h1 class="modal-title pt-3" id="signInModalLabel">🚀✨ Launching Soon! ✨🔥</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
 </html>
 
 <script>
   window.addEventListener('load', function () {
     const loader = document.getElementById('loader');
     loader.style.display = 'none';
+  });
+</script>
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var myModal = new bootstrap.Modal(document.getElementById('comingSoon'));
+    myModal.show();
   });
 </script>
