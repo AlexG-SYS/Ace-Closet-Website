@@ -22,28 +22,30 @@ import {
   ReCaptchaV3Provider,
 } from '@angular/fire/app-check';
 
+const firebaseConfig = {
+  apiKey: 'AIzaSyCFXnE0MFYtoAeupRaQIQ2tDvN-rznIfpM',
+  authDomain: 'ace-closet-website.firebaseapp.com',
+  projectId: 'ace-closet-website',
+  storageBucket: 'ace-closet-website.appspot.com',
+  messagingSenderId: '1053899946118',
+  appId: '1:1053899946118:web:0288252318387240e0f907',
+  measurementId: 'G-Q5K7BCCZF6',
+};
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAnimations(), // Use provideAnimations, NOT provideAnimationsAsync
 
     // Initialize Firebase FIRST
-    provideFirebaseApp(() =>
-      initializeApp({
-        apiKey: 'AIzaSyCFXnE0MFYtoAeupRaQIQ2tDvN-rznIfpM',
-        authDomain: 'ace-closet-website.firebaseapp.com',
-        projectId: 'ace-closet-website',
-        storageBucket: 'ace-closet-website.appspot.com',
-        messagingSenderId: '1053899946118',
-        appId: '1:1053899946118:web:0288252318387240e0f907',
-        measurementId: 'G-Q5K7BCCZF6',
-      })
-    ),
+    provideFirebaseApp(() => initializeApp(firebaseConfig)),
     // Then provide other Firebase services
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     provideAnalytics(() => getAnalytics()),
+    ScreenTrackingService,
+    UserTrackingService,
     providePerformance(() => getPerformance()),
     provideMessaging(() => getMessaging()),
     provideAppCheck(() =>
@@ -54,8 +56,5 @@ export const appConfig: ApplicationConfig = {
         isTokenAutoRefreshEnabled: true, // Optional: Enables auto-refresh of AppCheck tokens
       })
     ),
-
-    ScreenTrackingService, // These should be AFTER the providers
-    UserTrackingService,
   ],
 };

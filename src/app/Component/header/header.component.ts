@@ -74,7 +74,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     ]),
     registerPhoneNumber: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^\d{3}-\d{4}$/), // Pattern for phone number
+      Validators.pattern(/^\d{7}$/), // Pattern for phone number
     ]),
   });
 

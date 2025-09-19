@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { PageTrackingService } from './Service/page-tracking.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,10 @@ import { filter } from 'rxjs/operators';
 export class AppComponent implements OnInit {
   title = 'Ace Closet Website';
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private pageTracking: PageTrackingService
+  ) {}
 
   ngOnInit() {
     this.router.events
