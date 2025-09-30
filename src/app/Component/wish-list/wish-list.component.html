@@ -114,10 +114,13 @@
                     &nbsp;&nbsp;
                     <h6 class="fs-7 m-0">${{ product.price | number : "1.2-2" }}</h6>
                 </span>
-                } @if(product.quantity
+                } @if(product.status
+                == 'inactive'){ <br />
+                <span class="productLabel mt-1">Not Available</span>
+                } @else if(product.quantity
                 <= 0){ <br />
                 <span class="productLabel mt-1">Out of Stock</span>
-                } @else {
+                }@else {
                 <div class="pt-2">
                     <a class="link fs-8" (click)="moveToCart(product.id)">Move to Cart</a>
                 </div>
